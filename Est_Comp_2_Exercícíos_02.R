@@ -24,27 +24,31 @@ for (i in 1:10000) {
 
 # Lançamento de um dado
 
-# Sair a face 5
+#1.1 Sair a face 5
 
-
+mean(um_dado == 5)
 
 # Sair a face 2 ou 5
 
-
+mean(um_dado == 5 | um_dado ==  2)
 
 
 # No lançamento de dois dados
 
 
 
-# A soma dos valores ser 11.
+# 2.1 A soma dos valores ser 11.
+
+mean(sapply(dois_dados, function (x) sum(x) == 11))
 
 
 # A soma dos valores ser 7.
 
+mean(sapply(dois_dados, function (x) sum(x) == 7))
 
 # Alguma face ser 5
 
+mean(sapply(dois_dados, function (x) any(x == 5)))
 
 
 
@@ -56,21 +60,23 @@ for (i in 1:10000) {
 # A soma dos valores ser 18.
 
 
-
+mean(sapply(tres_dados, function(x) sum(x) == 18))
 
 # A soma dos valores ser 15.
 
-
+mean(sapply(tres_dados, function(x) sum(x) == 15))
 
 # Alguma face ser 5.
 
-
+mean(sapply(tres_dados, function(x) any(x == 5)))
 
 
 # sair ao menos uma face 6.
 
+mean(sapply(tres_dados, function(x) any(x == 6)))
 
 
+#-------------------------------------------------------------------------------------------------------------------#
 
 
 #1.2 Uma oficina realiza dois serviços de rotina em seus atendimentos (S1 e S2).
@@ -106,30 +112,32 @@ Resultado_s3 <- c()
 
 # 1.1 Ser concluído com menos de 22 minutos?
 
-(resultado_11 <- (mean(Resultado_s1 < 22) ))
+mean(Resultado_s1 < 22)
 
 # 1.2 Ser concluído entre 18 a 20 minutos?
 
-(resultado_12 <- (mean(Resultado_s1 <= 20 & Resultado_s1 >= 18))) 
+mean(Resultado_s1 <= 20 & Resultado_s1 >= 18)
 
 # Qual a probabilidade do segundo serviço:
 
 #2.1 ser concluído com menos de 35 minutos?
 
-(resultado_21 <- (mean(Resultado_s2 < 35))) 
+mean(Resultado_s2 < 35)
 
 
 #2.2 Ser concluído com mais de 42 minutos?
 
-(resultado_22 <- (mean(Resultado_s2 > 42))) 
+mean(Resultado_s2 > 42)
 
 # Qual a probabilidade de ambos serviços serem concluídos com mais de uma hora?
 
-(resultado_3 <- (mean(Resultado_s3 > 60))) 
+mean(Resultado_s3 > 60) 
 
 
 
 
+
+#-------------------------------------------------------------------------------------------------------------------#
 #1.3 Considere o contexto do problema anterior porém com a seguinte condição:
 #se S1 demora até 18 minutos, S2 tem tempo uniforme entre 30 e 50 minutos.
 #Porém, se S1 demora mais que 18 minutos, S2 tem distribuição uniforme entre 40 a 60 minutos.
@@ -169,25 +177,74 @@ for (i in 1:10000) {
 }
 
 #1.1 ser concluído com menos de 22 minutos?
-(resultado_11 <- (mean(Resultado_s1 < 22) ))
+mean(Resultado_s1 < 22) 
 
 
 #1.2 ser concluído entre 18 a 20 minutos?
-(resultado_12 <- (mean(Resultado_s1 < 20 & Resultado_s1 > 18 ) ))
+mean(Resultado_s1 < 20 & Resultado_s1 > 18 )
 
 
 # Qual a probabilidade do segundo serviço:
 
 #2.1 ser concluído com menos de 35 minutos? 
 
-(resultado_21 <- (mean(Resultado_s2 < 35) ))
+mean(Resultado_s2 < 35)
 
 #2.2 se concluído com mais de 42 minutos?
 
-(resultado_22 <- (mean(Resultado_s2 > 42) ))
+mean(Resultado_s2 > 42) 
 
 
 # Qual a probabilidade de ambos serviços serem concluídos com mais de uma hora?
 
-(resultado_3 <- (mean(Resultado_s3 > 60) ))
+mean(Resultado_s3 > 60)
+
+
+
+#-------------------------------------------------------------------------------------------------------------------
+# 1.4 Seja Y uma v.a. com distribuição normal Y∼N(μ=100,σ2=102). 
+
+
+
+y <- rnorm(10000, 100, 10)
+
+
+#Calcule:
+
+#P(Y<108)
+
+mean(y < 108)
+
+#P(Y>112)
+
+mean(y > 112)
+
+#P(90<Y<120)
+
+mean(y>90 & y< 120)
+
+#o valor de a tal que P(Y<a)=0.80
+
+quantile(y, 0.8)
+
+#o valor de a tal que P(Y>a)=0.60
+
+quantile(y, 0.4)
+
+#P(Y<102|Y<112)
+
+mean(y < 102) / mean(y < 112) 
+
+#P(Y>115|Y>105)
+
+mean(y > 115) / mean(y > 105)
+
+#P(Y<105|Y>92)
+
+mean (y > 92 & y < 105) / mean(y > 92)
+
+#P(100<Y<120|Y>105)
+
+mean(y>105 & y <120) / mean(y > 105)
+
 
