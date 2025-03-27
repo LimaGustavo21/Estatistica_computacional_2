@@ -1,22 +1,24 @@
-um_dado <- c()
-dois_dados <- list()
-tres_dados <- list()
+N <- 10000
+
+um_dado <- matrix(0,N)
+dois_dados <- matrix(0,N,2)
+tres_dados <- matrix(0,N,3)
 
 dado <- c(1,2,3,4,5,6)
 
 
-for (i in 1:10000) {
+for (i in 1:N) {
   
   dado_1 = sample(dado,size = 1)
   dado_2 = sample(dado,size = 1)
   dado_3 = sample(dado,size = 1)
   
   
-  um_dado <- c(um_dado, dado_1 )
+  um_dado[i,1] <- dado_1
   
-  dois_dados[[i]] <- c(dado_1, dado_2)
+  dois_dados[i,1:2] <- c(dado_1, dado_2)
   
-  tres_dados[[i]] <- c(dado_1, dado_2, dado_3)
+  tres_dados[i,1:3] <- c(dado_1, dado_2, dado_3)
   
   
 }
@@ -39,16 +41,16 @@ mean(um_dado == 5 | um_dado ==  2)
 
 # 2.1 A soma dos valores ser 11.
 
-mean(sapply(dois_dados, function (x) sum(x) == 11))
+mean(apply(dois_dados, 1 , function (x) sum(x) == 11))
 
 
 # A soma dos valores ser 7.
 
-mean(sapply(dois_dados, function (x) sum(x) == 7))
+mean(apply(dois_dados, 1,function (x) sum(x) == 7))
 
 # Alguma face ser 5
 
-mean(sapply(dois_dados, function (x) any(x == 5)))
+mean(apply(dois_dados, 1, function (x) any(x == 5)))
 
 
 
@@ -60,20 +62,20 @@ mean(sapply(dois_dados, function (x) any(x == 5)))
 # A soma dos valores ser 18.
 
 
-mean(sapply(tres_dados, function(x) sum(x) == 18))
+mean(apply(tres_dados, 1, function(x) sum(x) == 18))
 
 # A soma dos valores ser 15.
 
-mean(sapply(tres_dados, function(x) sum(x) == 15))
+mean(apply(tres_dados, 1, function(x) sum(x) == 15))
 
 # Alguma face ser 5.
 
-mean(sapply(tres_dados, function(x) any(x == 5)))
+mean(apply(tres_dados, 1,  function(x) any(x == 5)))
 
 
 # sair ao menos uma face 6.
 
-mean(sapply(tres_dados, function(x) any(x == 6)))
+mean(apply(tres_dados, 1, function(x) any(x == 6)))
 
 
 #-------------------------------------------------------------------------------------------------------------------#
