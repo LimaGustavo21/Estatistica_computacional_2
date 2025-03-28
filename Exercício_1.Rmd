@@ -105,6 +105,47 @@ Considere uma aplicação financeira com aportes mensais de R$ 100,00, juros de 
     Qual o valor após 1 ano?
     Quantos meses são necessários para atingir R$ 2.000,00 ?
 
+```{r}
+valores <-  matrix(0,12,2)
+
+valores[1,] <- c(1,100)
+
+deposito <- 100
+
+juros <- 1.003
+
+for (i in 2:12) {
+    
+    valores[i,] <- c(i,deposito + valores[i-1,2]*juros)
+  
+  
+}
+valores
+valores_2 <-  matrix(0, ncol =2)
+
+valores_2[1,] <- c(1,100)
+
+deposito <- 100
+
+juros <- 1.003
+
+i <- 2
+
+while (valores_2[i-1,2] < 2000){
+  
+
+
+  valores_2[i,] <- c(i,deposito + valores_2[i-1,2]*juros)
+  
+   i <- i+1
+  
+}
+
+valores_2
+```
+
+
+    
 
 
 
