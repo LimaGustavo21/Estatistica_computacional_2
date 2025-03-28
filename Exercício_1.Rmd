@@ -1,0 +1,113 @@
+---
+title: "Atividade 1"
+output: html_notebook
+---
+
+### 2.1 Fornecer comandos para criar vetores a seguir.
+
+
+    1 1 1 2 2 2 3 3 3 4 4 4 5 5 5
+    1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
+    1 2 3 4 5 6 7 8 9 10 1 2 3 4 5 6 7 8 9 10
+    0.5 1.5 2.5 3.5 4.5 5.5 6.5 7.5
+    -3 -2 -1 0 1 2 3
+    10  10  15  15  15  15  15  13  13  13
+    1  2  2  3  3  3  4  4  4  4  5  5  5  5  5
+    10  10  10  10  10  9  9  9  9  8  8  8  7  7
+
+```{r}
+
+a <- rep(c(1,2,3,4,5),each = 3)
+b <- rep(c(1,2,3),5)
+c <- rep(seq(1,10),2)
+d <- seq(0.5,7.5)
+e <- seq(-3,3)
+f <- rep(c(10,15,13),c(2,5,3))
+g <- rep(seq(1,5), seq(1,5))
+h <- rep(seq(10,7), seq(5,2))
+
+```
+
+### 2.2 Criar vetores com os seguintes elementos
+
+
+    12   14   16   11   12   18   15   12   15
+    3  7  11  15  19  23
+    1  2  4  7  11  16  22  29  37  46  56  67
+    
+    
+```{r}
+a <-  c(12,14,16,11,12,18,15,12,15)
+
+b <- seq(3,23,4)
+
+c <-  c(1,cumsum(1:12)+1)
+```
+
+### 2.3 Fornecer comandos que forneçam a partir dos vetores criados no exemplo anterior:
+
+    Quantos valores únicos há em a) ?
+    Quais os valores em a) maiores que 13 ?
+    Quantos são os valores em a) maiores que 13 ?
+    Qual a proporção de valores em a) maiores que 13 ?
+    Qual o resultado em somar o vetor em b) com em c) ?
+    Quantos valores de a) são divisíveis por 3 ? Quais são eles?
+    Quantas vezes ocorrem cada valor de a)
+    Qual o valor mais frequente em a)
+
+```{r}
+length(unique(a))
+
+a[a>13]
+
+length(a[a>13])
+
+mean(a>13)
+
+b + c
+
+sum(a%%3 == 0)
+
+
+freq <- table(a)
+
+freq[freq == max(table(a))]
+```
+
+### 2.4 Ainda com os vetores criados no exemplo anterior, fornecer comandos que:
+
+
+    calcule as médias e desvios padrão de cada vetor.
+    crie um vetor permutando de posição os elementos do primeiro vetor.
+    crie um vetor amostrando com repetição os elementos do primeiro vetor e formando u vetor de mesmo tamanho.
+    repita o item anterior 10 vezes e em cada uma obtenha a média dos vetores criados.
+    
+```{r}
+mean(a) ; mean(b); mean(c) 
+
+sd(a) ; sd(b); sd(c) 
+
+sample(a, length(a))
+
+rep <- sample(a, length(a), replace = T)
+
+for (i in 1:10){
+  print(mean(sample(a, length(a), replace = T)))
+  
+}
+
+```
+
+### 3.1 Aplicação financeira
+
+Considere uma aplicação financeira com aportes mensais de R$ 100,00, juros de 0,3% ao mês.
+
+    Qual o valor após 1 ano?
+    Quantos meses são necessários para atingir R$ 2.000,00 ?
+
+
+
+
+
+
+
