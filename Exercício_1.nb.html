@@ -1783,6 +1783,15 @@ display: none;
 1  2  4  7  11  16  22  29  37  46  56  67</code></pre>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVZU0E4TFNBZ1l5Z3hNaXd4TkN3eE5pd3hNU3d4TWl3eE9Dd3hOU3d4TWl3eE5TbGNibHh1WWlBOExTQnpaWEVvTXl3eU15dzBLVnh1WEc1aklEd3RJQ0JqS0RFc1kzVnRjM1Z0S0RFNk1USXBLekVwWEc1Z1lHQWlmUT09IC0tPlxuXG5gYGByXG5hIDwtICBjKDEyLDE0LDE2LDExLDEyLDE4LDE1LDEyLDE1KVxuXG5iIDwtIHNlcSgzLDIzLDQpXG5cbmMgPC0gIGMoMSxjdW1zdW0oMToxMikrMSlcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYSA8LSAgYygxMiwxNCwxNiwxMSwxMiwxOCwxNSwxMiwxNSlcblxuYiA8LSBzZXEoMywyMyw0KVxuXG5jIDwtICBjKDEsY3Vtc3VtKDE6MTIpKzEpXG5gYGAifQ== -->
+<pre class="r"><code>a &lt;-  c(12,14,16,11,12,18,15,12,15)
+
+b &lt;- seq(3,23,4)
+
+c &lt;-  c(1,cumsum(1:12)+1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -1849,17 +1858,75 @@ repita o item anterior 10 vezes e em cada uma obtenha a média dos vetores criad
 <h3>3.1 Aplicação financeira</h3>
 <p>Considere uma aplicação financeira com aportes mensais de R$ 100,00,
 juros de 0,3% ao mês.</p>
-<pre><code>Qual o valor após 1 ano?
-Quantos meses são necessários para atingir R$ 2.000,00 ?</code></pre>
+<pre><code>- Qual o valor após 1 ano?</code></pre>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVkbUZzYjNKbGMxOHlYRzVjYm1CZ1lDSjkgLS0+XG5cbmBgYHJcbnZhbG9yZXNfMlxuXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmFsb3Jlc18yXG5cbmBgYCJ9 -->
-<pre class="r"><code>valores_2
-</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVkbUZzYjNKbGN5QThMU0FnYldGMGNtbDRLREFzTVRJc01pbGNibHh1ZG1Gc2IzSmxjMXN4TEYwZ1BDMGdZeWd4TERFd01DbGNibHh1WkdWd2IzTnBkRzhnUEMwZ01UQXdYRzVjYm1wMWNtOXpJRHd0SURFdU1EQXpYRzVjYm1admNpQW9hU0JwYmlBeU9qRXlLU0I3WEc0Z0lDQWdYRzRnSUNBZ2RtRnNiM0psYzF0cExGMGdQQzBnWXlocExHUmxjRzl6YVhSdklDc2dkbUZzYjNKbGMxdHBMVEVzTWwwcWFuVnliM01wWEc0Z0lGeHVJQ0JjYm4xY2JuWmhiRzl5WlhOY2JtQmdZQ0o5IC0tPlxuXG5gYGByXG52YWxvcmVzIDwtICBtYXRyaXgoMCwxMiwyKVxuXG52YWxvcmVzWzEsXSA8LSBjKDEsMTAwKVxuXG5kZXBvc2l0byA8LSAxMDBcblxuanVyb3MgPC0gMS4wMDNcblxuZm9yIChpIGluIDI6MTIpIHtcbiAgICBcbiAgICB2YWxvcmVzW2ksXSA8LSBjKGksZGVwb3NpdG8gKyB2YWxvcmVzW2ktMSwyXSpqdXJvcylcbiAgXG4gIFxufVxudmFsb3Jlc1xuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudmFsb3JlcyA8LSAgbWF0cml4KDAsMTIsMilcblxudmFsb3Jlc1sxLF0gPC0gYygxLDEwMClcblxuZGVwb3NpdG8gPC0gMTAwXG5cbmp1cm9zIDwtIDEuMDAzXG5cbmZvciAoaSBpbiAyOjEyKSB7XG4gICAgXG4gICAgdmFsb3Jlc1tpLF0gPC0gYyhpLGRlcG9zaXRvICsgdmFsb3Jlc1tpLTEsMl0qanVyb3MpXG4gIFxuICBcbn1cbnZhbG9yZXNcbmBgYCJ9 -->
+<pre class="r"><code>valores &lt;-  matrix(0,12,2)
+
+valores[1,] &lt;- c(1,100)
+
+deposito &lt;- 100
+
+juros &lt;- 1.003
+
+for (i in 2:12) {
+    
+    valores[i,] &lt;- c(i,deposito + valores[i-1,2]*juros)
+  
+  
+}
+valores</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgWywxXSAgICAgIFssMl1cbiBbMSxdICAgIDEgIDEwMC4wMDAwXG4gWzIsXSAgICAyICAyMDAuMzAwMFxuIFszLF0gICAgMyAgMzAwLjkwMDlcbiBbNCxdICAgIDQgIDQwMS44MDM2XG4gWzUsXSAgICA1ICA1MDMuMDA5MFxuIFs2LF0gICAgNiAgNjA0LjUxODBcbiBbNyxdICAgIDcgIDcwNi4zMzE2XG4gWzgsXSAgICA4ICA4MDguNDUwNlxuIFs5LF0gICAgOSAgOTEwLjg3NTlcblsxMCxdICAgMTAgMTAxMy42MDg2XG5bMTEsXSAgIDExIDExMTYuNjQ5NFxuWzEyLF0gICAxMiAxMjE5Ljk5OTNcblsxMyxdICAgMTMgMTMyMy42NTkzXG5bMTQsXSAgIDE0IDE0MjcuNjMwM1xuWzE1LF0gICAxNSAxNTMxLjkxMzJcblsxNixdICAgMTYgMTYzNi41MDg5XG5bMTcsXSAgIDE3IDE3NDEuNDE4NVxuWzE4LF0gICAxOCAxODQ2LjY0MjdcblsxOSxdICAgMTkgMTk1Mi4xODI3XG5bMjAsXSAgIDIwIDIwNTguMDM5MlxuWzIxLF0gICAgMCAgICAwLjAwMDBcblsyMixdICAgIDAgICAgMC4wMDAwXG5bMjMsXSAgICAwICAgIDAuMDAwMFxuWzI0LF0gICAgMCAgICAwLjAwMDBcblsyNSxdICAgIDAgICAgMC4wMDAwXG5bMjYsXSAgICAwICAgIDAuMDAwMFxuWzI3LF0gICAgMCAgICAwLjAwMDBcblsyOCxdICAgIDAgICAgMC4wMDAwXG5bMjksXSAgICAwICAgIDAuMDAwMFxuWzMwLF0gICAgMCAgICAwLjAwMDBcbiJ9 -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgWywxXSAgICAgIFssMl1cbiBbMSxdICAgIDEgIDEwMC4wMDAwXG4gWzIsXSAgICAyICAyMDAuMzAwMFxuIFszLF0gICAgMyAgMzAwLjkwMDlcbiBbNCxdICAgIDQgIDQwMS44MDM2XG4gWzUsXSAgICA1ICA1MDMuMDA5MFxuIFs2LF0gICAgNiAgNjA0LjUxODBcbiBbNyxdICAgIDcgIDcwNi4zMzE2XG4gWzgsXSAgICA4ICA4MDguNDUwNlxuIFs5LF0gICAgOSAgOTEwLjg3NTlcblsxMCxdICAgMTAgMTAxMy42MDg2XG5bMTEsXSAgIDExIDExMTYuNjQ5NFxuWzEyLF0gICAxMiAxMjE5Ljk5OTNcbiJ9 -->
+<pre><code>      [,1]      [,2]
+ [1,]    1  100.0000
+ [2,]    2  200.3000
+ [3,]    3  300.9009
+ [4,]    4  401.8036
+ [5,]    5  503.0090
+ [6,]    6  604.5180
+ [7,]    7  706.3316
+ [8,]    8  808.4506
+ [9,]    9  910.8759
+[10,]   10 1013.6086
+[11,]   11 1116.6494
+[12,]   12 1219.9993</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<pre><code>- Quantos meses são necessários para atingir R$ 2.000,00 ?</code></pre>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVYRzUyWVd4dmNtVnpYeklnUEMwZ0lHMWhkSEpwZUNnd0xESTFMRElwWEc1Y2JuWmhiRzl5WlhOZk1sc3hMRjBnUEMwZ1l5Z3hMREV3TUNsY2JseHVaR1Z3YjNOcGRHOGdQQzBnTVRBd1hHNWNibXAxY205eklEd3RJREV1TURBelhHNWNibWtnUEMwZ01seHVYRzUzYUdsc1pTQW9kbUZzYjNKbGMxOHlXMmt0TVN3eVhTQThJREl3TURBcGUxeHVJQ0JjYmx4dVhHNGdJSFpoYkc5eVpYTmZNbHRwTEYwZ1BDMGdZeWhwTEdSbGNHOXphWFJ2SUNzZ2RtRnNiM0psYzE4eVcya3RNU3d5WFNwcWRYSnZjeWxjYmlBZ1hHNGdJQ0JwSUR3dElHa3JNVnh1SUNCY2JuMWNibHh1ZG1Gc2IzSmxjMTh5WEc1Z1lHQWlmUT09IC0tPlxuXG5gYGByXG5cbnZhbG9yZXNfMiA8LSAgbWF0cml4KDAsMjUsMilcblxudmFsb3Jlc18yWzEsXSA8LSBjKDEsMTAwKVxuXG5kZXBvc2l0byA8LSAxMDBcblxuanVyb3MgPC0gMS4wMDNcblxuaSA8LSAyXG5cbndoaWxlICh2YWxvcmVzXzJbaS0xLDJdIDwgMjAwMCl7XG4gIFxuXG5cbiAgdmFsb3Jlc18yW2ksXSA8LSBjKGksZGVwb3NpdG8gKyB2YWxvcmVzXzJbaS0xLDJdKmp1cm9zKVxuICBcbiAgIGkgPC0gaSsxXG4gIFxufVxuXG52YWxvcmVzXzJcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG52YWxvcmVzXzIgPC0gIG1hdHJpeCgwLDI1LDIpXG5cbnZhbG9yZXNfMlsxLF0gPC0gYygxLDEwMClcblxuZGVwb3NpdG8gPC0gMTAwXG5cbmp1cm9zIDwtIDEuMDAzXG5cbmkgPC0gMlxuXG53aGlsZSAodmFsb3Jlc18yW2ktMSwyXSA8IDIwMDApe1xuICBcblxuXG4gIHZhbG9yZXNfMltpLF0gPC0gYyhpLGRlcG9zaXRvICsgdmFsb3Jlc18yW2ktMSwyXSpqdXJvcylcbiAgXG4gICBpIDwtIGkrMVxuICBcbn1cblxudmFsb3Jlc18yXG5gYGAifQ== -->
+<pre class="r"><code>
+valores_2 &lt;-  matrix(0,25,2)
+
+valores_2[1,] &lt;- c(1,100)
+
+deposito &lt;- 100
+
+juros &lt;- 1.003
+
+i &lt;- 2
+
+while (valores_2[i-1,2] &lt; 2000){
+  
+
+
+  valores_2[i,] &lt;- c(i,deposito + valores_2[i-1,2]*juros)
+  
+   i &lt;- i+1
+  
+}
+
+valores_2</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICAgWywxXSAgICAgIFssMl1cbiBbMSxdICAgIDEgIDEwMC4wMDAwXG4gWzIsXSAgICAyICAyMDAuMzAwMFxuIFszLF0gICAgMyAgMzAwLjkwMDlcbiBbNCxdICAgIDQgIDQwMS44MDM2XG4gWzUsXSAgICA1ICA1MDMuMDA5MFxuIFs2LF0gICAgNiAgNjA0LjUxODBcbiBbNyxdICAgIDcgIDcwNi4zMzE2XG4gWzgsXSAgICA4ICA4MDguNDUwNlxuIFs5LF0gICAgOSAgOTEwLjg3NTlcblsxMCxdICAgMTAgMTAxMy42MDg2XG5bMTEsXSAgIDExIDExMTYuNjQ5NFxuWzEyLF0gICAxMiAxMjE5Ljk5OTNcblsxMyxdICAgMTMgMTMyMy42NTkzXG5bMTQsXSAgIDE0IDE0MjcuNjMwM1xuWzE1LF0gICAxNSAxNTMxLjkxMzJcblsxNixdICAgMTYgMTYzNi41MDg5XG5bMTcsXSAgIDE3IDE3NDEuNDE4NVxuWzE4LF0gICAxOCAxODQ2LjY0MjdcblsxOSxdICAgMTkgMTk1Mi4xODI3XG5bMjAsXSAgIDIwIDIwNTguMDM5MlxuWzIxLF0gICAgMCAgICAwLjAwMDBcblsyMixdICAgIDAgICAgMC4wMDAwXG5bMjMsXSAgICAwICAgIDAuMDAwMFxuWzI0LF0gICAgMCAgICAwLjAwMDBcblsyNSxdICAgIDAgICAgMC4wMDAwXG4ifQ== -->
 <pre><code>      [,1]      [,2]
  [1,]    1  100.0000
  [2,]    2  200.3000
@@ -1885,19 +1952,165 @@ Quantos meses são necessários para atingir R$ 2.000,00 ?</code></pre>
 [22,]    0    0.0000
 [23,]    0    0.0000
 [24,]    0    0.0000
-[25,]    0    0.0000
-[26,]    0    0.0000
-[27,]    0    0.0000
-[28,]    0    0.0000
-[29,]    0    0.0000
-[30,]    0    0.0000</code></pre>
+[25,]    0    0.0000</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+</div>
+<div id="sequência-de-fibonacci" class="section level3">
+<h3>3.2 Sequência de Fibonacci</h3>
+<p>É uma sequencia de números (F0,F1,F2,…,Fn) em que F0=0,F1=1, F2=1 e
+Fk=Fk−2+Fk−1. Escreva comandos para:</p>
+<pre><code>- Gerar os 10 primeiros números.</code></pre>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVabWxpWEc1Y2JtQmdZQ0o5IC0tPlxuXG5gYGByXG5maWJcblxuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZmliXG5cbmBgYCJ9 -->
+<pre class="r"><code>fib
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiIFsxXSAgMCAgMSAgMSAgMiAgMyAgNSAgOCAxMyAyMSAzNFxuIn0= -->
+<pre><code> [1]  0  1  1  2  3  5  8 13 21 34</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<pre><code>- Encontrar o primeiro valor maior que 200</code></pre>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHViV0Y0S0dacFlpbGNibHh1WUdCZ0luMD0gLS0+XG5cbmBgYHJcbm1heChmaWIpXG5cbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWF4KGZpYilcblxuYGBgIn0= -->
+<pre class="r"><code>max(fib)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDIzM1xuIn0= -->
+<pre><code>[1] 233</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<pre><code>- Encontrar quantos termos são necessários para superar 500.</code></pre>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHViR1Z1WjNSb0tHWnBZaWxjYmx4dVlHQmdJbjA9IC0tPlxuXG5gYGByXG5sZW5ndGgoZmliKVxuXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGVuZ3RoKGZpYilcblxuYGBgIn0= -->
+<pre class="r"><code>length(fib)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDE2XG4ifQ== -->
+<pre><code>[1] 16</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<pre><code>
+## 4 Funções:
+
+### 4.1 Crie uma função que receba um número e encontre um valor igual ou maior que seja divisível por 7.
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVYRzVjYm1aMWJpQThMU0JtZFc1amRHbHZiaWg0S1NCN1hHNGdJR2xtSUNoNElDVWxJRGNnUFQwZ01Da2dleUFnWEc0Z0lDQWdjbVYwZFhKdUtIZ3BYRzRnSUgwZ1pXeHpaU0I3WEc0Z0lDQWdjbVYwZFhKdUtIZ2dLeUFvTnlBdElIZ2dKU1VnTnlrcElDQmNiaUFnZlZ4dWZWeHVYRzVoSUR3dElHWjFiaWd5TVNsY2JseHVYRzVnWUdBaWZRPT0gLS0+XG5cbmBgYHJcblxuXG5mdW4gPC0gZnVuY3Rpb24oeCkge1xuICBpZiAoeCAlJSA3ID09IDApIHsgIFxuICAgIHJldHVybih4KVxuICB9IGVsc2Uge1xuICAgIHJldHVybih4ICsgKDcgLSB4ICUlIDcpKSAgXG4gIH1cbn1cblxuYSA8LSBmdW4oMjEpXG5cblxuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5cbmZ1biA8LSBmdW5jdGlvbih4KSB7XG4gIGlmICh4ICUlIDcgPT0gMCkgeyAgXG4gICAgcmV0dXJuKHgpXG4gIH0gZWxzZSB7XG4gICAgcmV0dXJuKHggKyAoNyAtIHggJSUgNykpICBcbiAgfVxufVxuXG5hIDwtIGZ1bigyMSlcblxuXG5gYGAifQ== --&gt;
+
+```r
+
+
+fun &lt;- function(x) {
+  if (x %% 7 == 0) {  
+    return(x)
+  } else {
+    return(x + (7 - x %% 7))  
+  }
+}
+
+a &lt;- fun(21)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="crie-uma-função-que" class="section level3">
+<h3>4.2 Crie uma função que:</h3>
+<pre><code>- Tome um número e calcule a altura de um triângulo equilátero com lado igual a este número.</code></pre>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVZV3gwWVNBOExTQm1kVzVqZEdsdmJpaHNZV1J2S1NCN1hHNGdJSGdnUEMwZ2JHRmtieUFxSUhOeGNuUW9NeWtnTHlBeVhHNGdJSEpsZEhWeWJpaDRLVnh1ZlZ4dVhHNWhiSFJoS0RNcFhHNWdZR0FpZlE9PSAtLT5cblxuYGBgclxuYWx0YSA8LSBmdW5jdGlvbihsYWRvKSB7XG4gIHggPC0gbGFkbyAqIHNxcnQoMykgLyAyXG4gIHJldHVybih4KVxufVxuXG5hbHRhKDMpXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYWx0YSA8LSBmdW5jdGlvbihsYWRvKSB7XG4gIHggPC0gbGFkbyAqIHNxcnQoMykgLyAyXG4gIHJldHVybih4KVxufVxuXG5hbHRhKDMpXG5gYGAifQ== -->
+<pre class="r"><code>alta &lt;- function(lado) {
+  x &lt;- lado * sqrt(3) / 2
+  return(x)
+}
+
+alta(3)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<pre><code>- Idem para calcular a área.</code></pre>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVZWElnUEMwZ1puVnVZM1JwYjI0b2JHRmtieWtnZTF4dUlDQWdJRnh1SUNBZ0lIa2dQQzBnS0d4aFpHOHFZV3gwWVNoc1lXUnZLU2t2TWx4dUlDQWdJRnh1SUNBZ0lISmxkSFZ5YmloNUtWeHVJQ0FnSUZ4dUlDQWdYRzU5WEc1Y2JtRnlLRE1wWEc1Z1lHQWlmUT09IC0tPlxuXG5gYGByXG5hciA8LSBmdW5jdGlvbihsYWRvKSB7XG4gICAgXG4gICAgeSA8LSAobGFkbyphbHRhKGxhZG8pKS8yXG4gICAgXG4gICAgcmV0dXJuKHkpXG4gICAgXG4gICBcbn1cblxuYXIoMylcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYXIgPC0gZnVuY3Rpb24obGFkbykge1xuICAgIFxuICAgIHkgPC0gKGxhZG8qYWx0YShsYWRvKSkvMlxuICAgIFxuICAgIHJldHVybih5KVxuICAgIFxuICAgXG59XG5cbmFyKDMpXG5gYGAifQ== -->
+<pre class="r"><code>ar &lt;- function(lado) {
+    
+    y &lt;- (lado*alta(lado))/2
+    
+    return(y)
+    
+   
+}
+
+ar(3)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<pre><code>- Idem para calcular o raio da circunferência circunscrita.</code></pre>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVZMmx5WXlBOExTQm1kVzVqZEdsdmJpaHNZV1J2S1NCN1hHNWNiaUFnSUNCNklEd3RJR3hoWkc4dmMzRnlkQ2d6S1Z4dUlDQWdJRnh1SUNBZ0lISmxkSFZ5YmloNktWeHVmVnh1WEc1amFYSmpLRE1wWEc1Y2JtQmdZQ0o5IC0tPlxuXG5gYGByXG5jaXJjIDwtIGZ1bmN0aW9uKGxhZG8pIHtcblxuICAgIHogPC0gbGFkby9zcXJ0KDMpXG4gICAgXG4gICAgcmV0dXJuKHopXG59XG5cbmNpcmMoMylcblxuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2lyYyA8LSBmdW5jdGlvbihsYWRvKSB7XG5cbiAgICB6IDwtIGxhZG8vc3FydCgzKVxuICAgIFxuICAgIHJldHVybih6KVxufVxuXG5jaXJjKDMpXG5cbmBgYCJ9 -->
+<pre class="r"><code>circ &lt;- function(lado) {
+
+    z &lt;- lado/sqrt(3)
+    
+    return(z)
+}
+
+circ(3)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<pre><code>- Aplique a(s) funções aos números (lados) 1, 2, 4, 7, 11, 16, 22, 29, 37, 46, 56 e 67.</code></pre>
+</div>
+<div id="o-problema-dos-aniversários" class="section level3">
+<h3>4.3 O problema dos aniversários</h3>
+<p>Um exemplo clássico para mostrar que a intuição pode ser uma “má
+conselheira” quando calculamos probabilidades é o problema dos
+aniversários. O problema em calcular a probabilidade de haver alguma uma
+coincidência de aniversário em um grupo de pessoas. Escreva uma função
+em R que permita resolver ambos: achar a probabilidade para um grupo de
+pessoas ou achar o número de pessoas para uma certa probabilidade. Faça
+também o gráfico desta função.</p>
+<p>ani &lt;- function(x) {</p>
+<pre><code> if(x&gt;0 &amp;)
+ </code></pre>
+<p>}</p>
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQXRpdmlkYWRlIDEiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCiMjIyAyLjEgRm9ybmVjZXIgY29tYW5kb3MgcGFyYSBjcmlhciB2ZXRvcmVzIGEgc2VndWlyLgoKCiAgICAxIDEgMSAyIDIgMiAzIDMgMyA0IDQgNCA1IDUgNQogICAgMSAyIDMgMSAyIDMgMSAyIDMgMSAyIDMgMSAyIDMKICAgIDEgMiAzIDQgNSA2IDcgOCA5IDEwIDEgMiAzIDQgNSA2IDcgOCA5IDEwCiAgICAwLjUgMS41IDIuNSAzLjUgNC41IDUuNSA2LjUgNy41CiAgICAtMyAtMiAtMSAwIDEgMiAzCiAgICAxMCAgMTAgIDE1ICAxNSAgMTUgIDE1ICAxNSAgMTMgIDEzICAxMwogICAgMSAgMiAgMiAgMyAgMyAgMyAgNCAgNCAgNCAgNCAgNSAgNSAgNSAgNSAgNQogICAgMTAgIDEwICAxMCAgMTAgIDEwICA5ICA5ICA5ICA5ICA4ICA4ICA4ICA3ICA3CgpgYGB7cn0KCmEgPC0gcmVwKGMoMSwyLDMsNCw1KSxlYWNoID0gMykKYiA8LSByZXAoYygxLDIsMyksNSkKYyA8LSByZXAoc2VxKDEsMTApLDIpCmQgPC0gc2VxKDAuNSw3LjUpCmUgPC0gc2VxKC0zLDMpCmYgPC0gcmVwKGMoMTAsMTUsMTMpLGMoMiw1LDMpKQpnIDwtIHJlcChzZXEoMSw1KSwgc2VxKDEsNSkpCmggPC0gcmVwKHNlcSgxMCw3KSwgc2VxKDUsMikpCgpgYGAKCiMjIyAyLjIgQ3JpYXIgdmV0b3JlcyBjb20gb3Mgc2VndWludGVzIGVsZW1lbnRvcwoKCiAgICAxMiAgIDE0ICAgMTYgICAxMSAgIDEyICAgMTggICAxNSAgIDEyICAgMTUKICAgIDMgIDcgIDExICAxNSAgMTkgIDIzCiAgICAxICAyICA0ICA3ICAxMSAgMTYgIDIyICAyOSAgMzcgIDQ2ICA1NiAgNjcKICAgIAogICAgCmBgYHtyfQphIDwtICBjKDEyLDE0LDE2LDExLDEyLDE4LDE1LDEyLDE1KQoKYiA8LSBzZXEoMywyMyw0KQoKYyA8LSAgYygxLGN1bXN1bSgxOjEyKSsxKQpgYGAKCiMjIyAyLjMgRm9ybmVjZXIgY29tYW5kb3MgcXVlIGZvcm5lw6dhbSBhIHBhcnRpciBkb3MgdmV0b3JlcyBjcmlhZG9zIG5vIGV4ZW1wbG8gYW50ZXJpb3I6CgogICAgUXVhbnRvcyB2YWxvcmVzIMO6bmljb3MgaMOhIGVtIGEpID8KICAgIFF1YWlzIG9zIHZhbG9yZXMgZW0gYSkgbWFpb3JlcyBxdWUgMTMgPwogICAgUXVhbnRvcyBzw6NvIG9zIHZhbG9yZXMgZW0gYSkgbWFpb3JlcyBxdWUgMTMgPwogICAgUXVhbCBhIHByb3BvcsOnw6NvIGRlIHZhbG9yZXMgZW0gYSkgbWFpb3JlcyBxdWUgMTMgPwogICAgUXVhbCBvIHJlc3VsdGFkbyBlbSBzb21hciBvIHZldG9yIGVtIGIpIGNvbSBlbSBjKSA/CiAgICBRdWFudG9zIHZhbG9yZXMgZGUgYSkgc8OjbyBkaXZpc8OtdmVpcyBwb3IgMyA/IFF1YWlzIHPDo28gZWxlcz8KICAgIFF1YW50YXMgdmV6ZXMgb2NvcnJlbSBjYWRhIHZhbG9yIGRlIGEpCiAgICBRdWFsIG8gdmFsb3IgbWFpcyBmcmVxdWVudGUgZW0gYSkKCmBgYHtyfQpsZW5ndGgodW5pcXVlKGEpKQoKYVthPjEzXQoKbGVuZ3RoKGFbYT4xM10pCgptZWFuKGE+MTMpCgpiICsgYwoKc3VtKGElJTMgPT0gMCkKCgpmcmVxIDwtIHRhYmxlKGEpCgpmcmVxW2ZyZXEgPT0gbWF4KHRhYmxlKGEpKV0KYGBgCgojIyMgMi40IEFpbmRhIGNvbSBvcyB2ZXRvcmVzIGNyaWFkb3Mgbm8gZXhlbXBsbyBhbnRlcmlvciwgZm9ybmVjZXIgY29tYW5kb3MgcXVlOgoKCiAgICBjYWxjdWxlIGFzIG3DqWRpYXMgZSBkZXN2aW9zIHBhZHLDo28gZGUgY2FkYSB2ZXRvci4KICAgIGNyaWUgdW0gdmV0b3IgcGVybXV0YW5kbyBkZSBwb3Npw6fDo28gb3MgZWxlbWVudG9zIGRvIHByaW1laXJvIHZldG9yLgogICAgY3JpZSB1bSB2ZXRvciBhbW9zdHJhbmRvIGNvbSByZXBldGnDp8OjbyBvcyBlbGVtZW50b3MgZG8gcHJpbWVpcm8gdmV0b3IgZSBmb3JtYW5kbyB1IHZldG9yIGRlIG1lc21vIHRhbWFuaG8uCiAgICByZXBpdGEgbyBpdGVtIGFudGVyaW9yIDEwIHZlemVzIGUgZW0gY2FkYSB1bWEgb2J0ZW5oYSBhIG3DqWRpYSBkb3MgdmV0b3JlcyBjcmlhZG9zLgogICAgCmBgYHtyfQptZWFuKGEpIDsgbWVhbihiKTsgbWVhbihjKSAKCnNkKGEpIDsgc2QoYik7IHNkKGMpIAoKc2FtcGxlKGEsIGxlbmd0aChhKSkKCnJlcCA8LSBzYW1wbGUoYSwgbGVuZ3RoKGEpLCByZXBsYWNlID0gVCkKCmZvciAoaSBpbiAxOjEwKXsKICBwcmludChtZWFuKHNhbXBsZShhLCBsZW5ndGgoYSksIHJlcGxhY2UgPSBUKSkpCiAgCn0KCmBgYAoKIyMjIDMuMSBBcGxpY2HDp8OjbyBmaW5hbmNlaXJhCgpDb25zaWRlcmUgdW1hIGFwbGljYcOnw6NvIGZpbmFuY2VpcmEgY29tIGFwb3J0ZXMgbWVuc2FpcyBkZSBSJCAxMDAsMDAsIGp1cm9zIGRlIDAsMyUgYW8gbcOqcy4KCiAgICBRdWFsIG8gdmFsb3IgYXDDs3MgMSBhbm8/CiAgICBRdWFudG9zIG1lc2VzIHPDo28gbmVjZXNzw6FyaW9zIHBhcmEgYXRpbmdpciBSJCAyLjAwMCwwMCA/CgpgYGB7cn0KdmFsb3JlcyA8LSAgbWF0cml4KDAsMTIsMikKCnZhbG9yZXNbMSxdIDwtIGMoMSwxMDApCgpkZXBvc2l0byA8LSAxMDAKCmp1cm9zIDwtIDEuMDAzCgpmb3IgKGkgaW4gMjoxMikgewogICAgCiAgICB2YWxvcmVzW2ksXSA8LSBjKGksZGVwb3NpdG8gKyB2YWxvcmVzW2ktMSwyXSpqdXJvcykKICAKICAKfQp2YWxvcmVzCnZhbG9yZXNfMiA8LSAgbWF0cml4KDAsMzAsMikKCnZhbG9yZXNfMlsxLF0gPC0gYygxLDEwMCkKCmRlcG9zaXRvIDwtIDEwMAoKanVyb3MgPC0gMS4wMDMKCmkgPC0gMgoKd2hpbGUgKHZhbG9yZXNfMltpLTEsMl0gPCAyMDAwKXsKICAKCgogIHZhbG9yZXNfMltpLF0gPC0gYyhpLGRlcG9zaXRvICsgdmFsb3Jlc18yW2ktMSwyXSpqdXJvcykKICAKICAgaSA8LSBpKzEKICAKfQoKdmFsb3Jlc18yCmBgYAoKCiAgICAKCgoKCgoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQXRpdmlkYWRlIDEiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCiMjIyAyLjEgRm9ybmVjZXIgY29tYW5kb3MgcGFyYSBjcmlhciB2ZXRvcmVzIGEgc2VndWlyLgoKCiAgICAxIDEgMSAyIDIgMiAzIDMgMyA0IDQgNCA1IDUgNQogICAgMSAyIDMgMSAyIDMgMSAyIDMgMSAyIDMgMSAyIDMKICAgIDEgMiAzIDQgNSA2IDcgOCA5IDEwIDEgMiAzIDQgNSA2IDcgOCA5IDEwCiAgICAwLjUgMS41IDIuNSAzLjUgNC41IDUuNSA2LjUgNy41CiAgICAtMyAtMiAtMSAwIDEgMiAzCiAgICAxMCAgMTAgIDE1ICAxNSAgMTUgIDE1ICAxNSAgMTMgIDEzICAxMwogICAgMSAgMiAgMiAgMyAgMyAgMyAgNCAgNCAgNCAgNCAgNSAgNSAgNSAgNSAgNQogICAgMTAgIDEwICAxMCAgMTAgIDEwICA5ICA5ICA5ICA5ICA4ICA4ICA4ICA3ICA3CgpgYGB7cn0KCmEgPC0gcmVwKGMoMSwyLDMsNCw1KSxlYWNoID0gMykKYiA8LSByZXAoYygxLDIsMyksNSkKYyA8LSByZXAoc2VxKDEsMTApLDIpCmQgPC0gc2VxKDAuNSw3LjUpCmUgPC0gc2VxKC0zLDMpCmYgPC0gcmVwKGMoMTAsMTUsMTMpLGMoMiw1LDMpKQpnIDwtIHJlcChzZXEoMSw1KSwgc2VxKDEsNSkpCmggPC0gcmVwKHNlcSgxMCw3KSwgc2VxKDUsMikpCgpgYGAKCiMjIyAyLjIgQ3JpYXIgdmV0b3JlcyBjb20gb3Mgc2VndWludGVzIGVsZW1lbnRvcwoKCiAgICAxMiAgIDE0ICAgMTYgICAxMSAgIDEyICAgMTggICAxNSAgIDEyICAgMTUKICAgIDMgIDcgIDExICAxNSAgMTkgIDIzCiAgICAxICAyICA0ICA3ICAxMSAgMTYgIDIyICAyOSAgMzcgIDQ2ICA1NiAgNjcKICAgIAogICAgCmBgYHtyfQphIDwtICBjKDEyLDE0LDE2LDExLDEyLDE4LDE1LDEyLDE1KQoKYiA8LSBzZXEoMywyMyw0KQoKYyA8LSAgYygxLGN1bXN1bSgxOjEyKSsxKQpgYGAKCiMjIyAyLjMgRm9ybmVjZXIgY29tYW5kb3MgcXVlIGZvcm5lw6dhbSBhIHBhcnRpciBkb3MgdmV0b3JlcyBjcmlhZG9zIG5vIGV4ZW1wbG8gYW50ZXJpb3I6CgogICAgUXVhbnRvcyB2YWxvcmVzIMO6bmljb3MgaMOhIGVtIGEpID8KICAgIFF1YWlzIG9zIHZhbG9yZXMgZW0gYSkgbWFpb3JlcyBxdWUgMTMgPwogICAgUXVhbnRvcyBzw6NvIG9zIHZhbG9yZXMgZW0gYSkgbWFpb3JlcyBxdWUgMTMgPwogICAgUXVhbCBhIHByb3BvcsOnw6NvIGRlIHZhbG9yZXMgZW0gYSkgbWFpb3JlcyBxdWUgMTMgPwogICAgUXVhbCBvIHJlc3VsdGFkbyBlbSBzb21hciBvIHZldG9yIGVtIGIpIGNvbSBlbSBjKSA/CiAgICBRdWFudG9zIHZhbG9yZXMgZGUgYSkgc8OjbyBkaXZpc8OtdmVpcyBwb3IgMyA/IFF1YWlzIHPDo28gZWxlcz8KICAgIFF1YW50YXMgdmV6ZXMgb2NvcnJlbSBjYWRhIHZhbG9yIGRlIGEpCiAgICBRdWFsIG8gdmFsb3IgbWFpcyBmcmVxdWVudGUgZW0gYSkKCmBgYHtyfQpsZW5ndGgodW5pcXVlKGEpKQoKYVthPjEzXQoKbGVuZ3RoKGFbYT4xM10pCgptZWFuKGE+MTMpCgpiICsgYwoKc3VtKGElJTMgPT0gMCkKCgpmcmVxIDwtIHRhYmxlKGEpCgpmcmVxW2ZyZXEgPT0gbWF4KHRhYmxlKGEpKV0KYGBgCgojIyMgMi40IEFpbmRhIGNvbSBvcyB2ZXRvcmVzIGNyaWFkb3Mgbm8gZXhlbXBsbyBhbnRlcmlvciwgZm9ybmVjZXIgY29tYW5kb3MgcXVlOgoKCiAgICBjYWxjdWxlIGFzIG3DqWRpYXMgZSBkZXN2aW9zIHBhZHLDo28gZGUgY2FkYSB2ZXRvci4KICAgIGNyaWUgdW0gdmV0b3IgcGVybXV0YW5kbyBkZSBwb3Npw6fDo28gb3MgZWxlbWVudG9zIGRvIHByaW1laXJvIHZldG9yLgogICAgY3JpZSB1bSB2ZXRvciBhbW9zdHJhbmRvIGNvbSByZXBldGnDp8OjbyBvcyBlbGVtZW50b3MgZG8gcHJpbWVpcm8gdmV0b3IgZSBmb3JtYW5kbyB1IHZldG9yIGRlIG1lc21vIHRhbWFuaG8uCiAgICByZXBpdGEgbyBpdGVtIGFudGVyaW9yIDEwIHZlemVzIGUgZW0gY2FkYSB1bWEgb2J0ZW5oYSBhIG3DqWRpYSBkb3MgdmV0b3JlcyBjcmlhZG9zLgogICAgCmBgYHtyfQptZWFuKGEpIDsgbWVhbihiKTsgbWVhbihjKSAKCnNkKGEpIDsgc2QoYik7IHNkKGMpIAoKc2FtcGxlKGEsIGxlbmd0aChhKSkKCnJlcCA8LSBzYW1wbGUoYSwgbGVuZ3RoKGEpLCByZXBsYWNlID0gVCkKCmZvciAoaSBpbiAxOjEwKXsKICBwcmludChtZWFuKHNhbXBsZShhLCBsZW5ndGgoYSksIHJlcGxhY2UgPSBUKSkpCiAgCn0KCmBgYAoKIyMjIDMuMSBBcGxpY2HDp8OjbyBmaW5hbmNlaXJhCgpDb25zaWRlcmUgdW1hIGFwbGljYcOnw6NvIGZpbmFuY2VpcmEgY29tIGFwb3J0ZXMgbWVuc2FpcyBkZSBSJCAxMDAsMDAsIGp1cm9zIGRlIDAsMyUgYW8gbcOqcy4KCiAgICAtIFF1YWwgbyB2YWxvciBhcMOzcyAxIGFubz8KYGBge3J9CnZhbG9yZXMgPC0gIG1hdHJpeCgwLDEyLDIpCgp2YWxvcmVzWzEsXSA8LSBjKDEsMTAwKQoKZGVwb3NpdG8gPC0gMTAwCgpqdXJvcyA8LSAxLjAwMwoKZm9yIChpIGluIDI6MTIpIHsKICAgIAogICAgdmFsb3Jlc1tpLF0gPC0gYyhpLGRlcG9zaXRvICsgdmFsb3Jlc1tpLTEsMl0qanVyb3MpCiAgCiAgCn0KdmFsb3JlcwpgYGAKICAgIAogICAgLSBRdWFudG9zIG1lc2VzIHPDo28gbmVjZXNzw6FyaW9zIHBhcmEgYXRpbmdpciBSJCAyLjAwMCwwMCA/CgpgYGB7cn0KCnZhbG9yZXNfMiA8LSAgbWF0cml4KDAsMjUsMikKCnZhbG9yZXNfMlsxLF0gPC0gYygxLDEwMCkKCmRlcG9zaXRvIDwtIDEwMAoKanVyb3MgPC0gMS4wMDMKCmkgPC0gMgoKd2hpbGUgKHZhbG9yZXNfMltpLTEsMl0gPCAyMDAwKXsKICAKCgogIHZhbG9yZXNfMltpLF0gPC0gYyhpLGRlcG9zaXRvICsgdmFsb3Jlc18yW2ktMSwyXSpqdXJvcykKICAKICAgaSA8LSBpKzEKICAKfQoKdmFsb3Jlc18yCmBgYAoKIyMjIDMuMiBTZXF1w6puY2lhIGRlIEZpYm9uYWNjaQogICAgCsOJIHVtYSBzZXF1ZW5jaWEgZGUgbsO6bWVyb3MgKEYwLEYxLEYyLOKApixGbikgZW0gcXVlIEYwPTAsRjE9MSwgRjI9MSBlIEZrPUZr4oiSMitGa+KIkjEuCkVzY3JldmEgY29tYW5kb3MgcGFyYToKCiAgICAtIEdlcmFyIG9zIDEwIHByaW1laXJvcyBuw7ptZXJvcy4KYGBge3J9CmZpYiA8LSBjKDAsMSkKCmZvciAoaSBpbiAzOjEwKXsKICAKICBmaWJbaV0gPC0gZmliW2ktMl0gKyBmaWJbaS0xXQogIAp9CmZpYgpgYGAKICAgIAogICAgLSBFbmNvbnRyYXIgbyBwcmltZWlybyB2YWxvciBtYWlvciBxdWUgMjAwCmBgYHtyfQpmaWIgPC0gYygwLDEpCmkgPC0gMyAKCndoaWxlKCBtYXgoZmliKSA8PSAyMDAgKXsKICAgIAogICAgCiAgICAKICAgIGZpYltpXSA8LSBmaWJbaS0yXSArIGZpYltpLTFdCiAgICAKICAgIGkgPC0gaSArMQp9Cm1heChmaWIpCmBgYAogICAgCiAgICAtIEVuY29udHJhciBxdWFudG9zIHRlcm1vcyBzw6NvIG5lY2Vzc8OhcmlvcyBwYXJhIHN1cGVyYXIgNTAwLgpgYGB7cn0KZmliIDwtIGMoMCwxKQppIDwtIDMgCgp3aGlsZSggbWF4KGZpYikgPD0gNTAwICl7CiAgICAKICAgIAogICAgCiAgICBmaWJbaV0gPC0gZmliW2ktMl0gKyBmaWJbaS0xXQogICAgCiAgICBpIDwtIGkgKzEKfQpsZW5ndGgoZmliKQoKYGBgCmBgYAoKIyMgNCBGdW7Dp8O1ZXM6CgojIyMgNC4xIENyaWUgdW1hIGZ1bsOnw6NvIHF1ZSByZWNlYmEgdW0gbsO6bWVybyBlIGVuY29udHJlIHVtIHZhbG9yIGlndWFsIG91IG1haW9yIHF1ZSBzZWphIGRpdmlzw612ZWwgcG9yIDcuCgpgYGB7cn0KCgpmdW4gPC0gZnVuY3Rpb24oeCkgewogIGlmICh4ICUlIDcgPT0gMCkgeyAgCiAgICByZXR1cm4oeCkKICB9IGVsc2UgewogICAgcmV0dXJuKHggKyAoNyAtIHggJSUgNykpICAKICB9Cn0KCmEgPC0gZnVuKDIxKQoKCmBgYAoKIyMjIDQuMiBDcmllIHVtYSBmdW7Dp8OjbyBxdWU6CgoKICAgIC0gVG9tZSB1bSBuw7ptZXJvIGUgY2FsY3VsZSBhIGFsdHVyYSBkZSB1bSB0cmnDom5ndWxvIGVxdWlsw6F0ZXJvIGNvbSBsYWRvIGlndWFsIGEgZXN0ZSBuw7ptZXJvLgogICAgCmBgYHtyfQphbHRhIDwtIGZ1bmN0aW9uKGxhZG8pIHsKICB4IDwtIGxhZG8gKiBzcXJ0KDMpIC8gMgogIHJldHVybih4KQp9CgphbHRhKDMpCmBgYAogICAgCiAgICAtIElkZW0gcGFyYSBjYWxjdWxhciBhIMOhcmVhLgpgYGB7cn0KYXIgPC0gZnVuY3Rpb24obGFkbykgewogICAgCiAgICB5IDwtIChsYWRvKmFsdGEobGFkbykpLzIKICAgIAogICAgcmV0dXJuKHkpCiAgICAKICAgCn0KCmFyKDMpCmBgYAogICAgCiAgICAKICAgIC0gSWRlbSBwYXJhIGNhbGN1bGFyIG8gcmFpbyBkYSBjaXJjdW5mZXLDqm5jaWEgY2lyY3Vuc2NyaXRhLgpgYGB7cn0KY2lyYyA8LSBmdW5jdGlvbihsYWRvKSB7CgogICAgeiA8LSBsYWRvL3NxcnQoMykKICAgIAogICAgcmV0dXJuKHopCn0KCmNpcmMoMykKCmBgYAogICAgCiAgICAKICAgIC0gQXBsaXF1ZSBhKHMpIGZ1bsOnw7VlcyBhb3MgbsO6bWVyb3MgKGxhZG9zKSAxLCAyLCA0LCA3LCAxMSwgMTYsIDIyLCAyOSwgMzcsIDQ2LCA1NiBlIDY3LgoKCiMjIyA0LjMgTyBwcm9ibGVtYSBkb3MgYW5pdmVyc8OhcmlvcwoKVW0gZXhlbXBsbyBjbMOhc3NpY28gcGFyYSBtb3N0cmFyIHF1ZSBhIGludHVpw6fDo28gcG9kZSBzZXIgdW1hIOKAnG3DoSBjb25zZWxoZWlyYeKAnSBxdWFuZG8gY2FsY3VsYW1vcyBwcm9iYWJpbGlkYWRlcyDDqSBvIHByb2JsZW1hIGRvcyBhbml2ZXJzw6FyaW9zLgpPIHByb2JsZW1hIGVtIGNhbGN1bGFyIGEgcHJvYmFiaWxpZGFkZSBkZSBoYXZlciBhbGd1bWEgdW1hIGNvaW5jaWTDqm5jaWEgZGUgYW5pdmVyc8OhcmlvIGVtIHVtIGdydXBvIGRlIHBlc3NvYXMuCkVzY3JldmEgdW1hIGZ1bsOnw6NvIGVtIFIgcXVlIHBlcm1pdGEgcmVzb2x2ZXIgYW1ib3M6IGFjaGFyIGEgcHJvYmFiaWxpZGFkZSBwYXJhIHVtIGdydXBvIGRlIHBlc3NvYXMgb3UgYWNoYXIgbyBuw7ptZXJvIGRlIHBlc3NvYXMgcGFyYSB1bWEgY2VydGEgcHJvYmFiaWxpZGFkZS4gRmHDp2EgdGFtYsOpbSBvIGdyw6FmaWNvIGRlc3RhIGZ1bsOnw6NvLgoKYW5pIDwtIGZ1bmN0aW9uKHgpIHsKCiAgICAgaWYoeD4wICYpCiAgICAgCn0KCgoKCgoKCgoKCg==</div>
 
 
 

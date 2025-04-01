@@ -102,9 +102,7 @@ for (i in 1:10){
 
 Considere uma aplicação financeira com aportes mensais de R$ 100,00, juros de 0,3% ao mês.
 
-    Qual o valor após 1 ano?
-    Quantos meses são necessários para atingir R$ 2.000,00 ?
-
+    - Qual o valor após 1 ano?
 ```{r}
 valores <-  matrix(0,12,2)
 
@@ -121,7 +119,13 @@ for (i in 2:12) {
   
 }
 valores
-valores_2 <-  matrix(0,30,2)
+```
+    
+    - Quantos meses são necessários para atingir R$ 2.000,00 ?
+
+```{r}
+
+valores_2 <-  matrix(0,25,2)
 
 valores_2[1,] <- c(1,100)
 
@@ -144,8 +148,138 @@ while (valores_2[i-1,2] < 2000){
 valores_2
 ```
 
-
+### 3.2 Sequência de Fibonacci
     
+É uma sequencia de números (F0,F1,F2,…,Fn) em que F0=0,F1=1, F2=1 e Fk=Fk−2+Fk−1.
+Escreva comandos para:
+
+    - Gerar os 10 primeiros números.
+```{r}
+fib <- c(0,1)
+
+for (i in 3:10){
+  
+  fib[i] <- fib[i-2] + fib[i-1]
+  
+}
+fib
+```
+    
+    - Encontrar o primeiro valor maior que 200
+```{r}
+fib <- c(0,1)
+i <- 3 
+
+while( max(fib) <= 200 ){
+    
+    
+    
+    fib[i] <- fib[i-2] + fib[i-1]
+    
+    i <- i +1
+}
+max(fib)
+```
+    
+    - Encontrar quantos termos são necessários para superar 500.
+```{r}
+fib <- c(0,1)
+i <- 3 
+
+while( max(fib) <= 500 ){
+    
+    
+    
+    fib[i] <- fib[i-2] + fib[i-1]
+    
+    i <- i +1
+}
+length(fib)
+
+```
+```
+
+## 4 Funções:
+
+### 4.1 Crie uma função que receba um número e encontre um valor igual ou maior que seja divisível por 7.
+
+```{r}
+
+
+fun <- function(x) {
+  if (x %% 7 == 0) {  
+    return(x)
+  } else {
+    return(x + (7 - x %% 7))  
+  }
+}
+
+a <- fun(21)
+
+
+```
+
+### 4.2 Crie uma função que:
+
+
+    - Tome um número e calcule a altura de um triângulo equilátero com lado igual a este número.
+    
+```{r}
+alta <- function(lado) {
+  x <- lado * sqrt(3) / 2
+  return(x)
+}
+
+alta(3)
+```
+    
+    - Idem para calcular a área.
+```{r}
+ar <- function(lado) {
+    
+    y <- (lado*alta(lado))/2
+    
+    return(y)
+    
+   
+}
+
+ar(3)
+```
+    
+    
+    - Idem para calcular o raio da circunferência circunscrita.
+```{r}
+circ <- function(lado) {
+
+    z <- lado/sqrt(3)
+    
+    return(z)
+}
+
+circ(3)
+
+```
+    
+    
+    - Aplique a(s) funções aos números (lados) 1, 2, 4, 7, 11, 16, 22, 29, 37, 46, 56 e 67.
+
+
+### 4.3 O problema dos aniversários
+
+Um exemplo clássico para mostrar que a intuição pode ser uma “má conselheira” quando calculamos probabilidades é o problema dos aniversários.
+O problema em calcular a probabilidade de haver alguma uma coincidência de aniversário em um grupo de pessoas.
+Escreva uma função em R que permita resolver ambos: achar a probabilidade para um grupo de pessoas ou achar o número de pessoas para uma certa probabilidade. Faça também o gráfico desta função.
+
+ani <- function(x) {
+
+     if(x>0 &)
+     
+}
+
+
+
+
 
 
 
