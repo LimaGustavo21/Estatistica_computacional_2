@@ -250,3 +250,104 @@ mean (y > 92 & y < 105) / mean(y > 92)
 mean(y>105 & y <120) / mean(y > 105)
 
 
+#1.5 Considere um jogo que consiste em várias rodadas independentes com probabilidade de 0,35
+#de ganhar uma rodada. O jogo termina quando se perde a terceira rodada. Calcule:
+
+
+# X : Números de ensaios de Y até o 3 fracasso
+
+# Y : Bernoulli com P = 0.35
+
+
+n <-  1000000
+
+X <- numeric(1000000)
+
+
+for (i in 1:n) {
+  
+  Y <- c()
+  fracasso <- 0
+  
+  while (fracasso < 3) {
+    
+    Y <- c(Y,rbinom(1,1,0.35))
+    
+    fracasso <- sum(Y == 0)
+  }
+  
+
+  X[i] <- length(Y)
+  
+} 
+
+# A) Qual a probabilidade de conseguir 2 vitórias antes do jogo encerrar?
+
+mean(X == 5)
+
+# B) Qual a probabilidade do jogo ter quatro rodadas?
+
+mean(X == 4)
+
+# C) Qual a probabilidade do jogo ter mais de cinco rodadas?
+
+mean(X > 5)
+
+# D) Qual o número esperado de vitórias?
+
+mean(X - 3)
+
+# Qual o número esperado de rodadas?
+
+mean(X)
+
+# Repita os cálculos para ao menos três outros valores da probabilidade de 
+# ganhar uma rodada e número de derrotas que determina o encerramento do jogo.
+
+jogo <- function(prob,n_frac,ensaios){
+  
+  
+  X <- numeric(ensaios)
+  
+  
+  for (i in 1:ensaios) {
+    
+    Y <- c()
+    fracasso <- 0
+    
+    while (fracasso < n_frac) {
+      
+      Y <- c(Y,rbinom(1,1,prob))
+      
+      fracasso <- sum(Y == 0)
+    }
+    
+    
+    X[i] <- length(Y)
+    
+  } 
+  
+  return(X)
+  
+}
+
+X <- jogo(0.25,5,100000)
+
+Z <- jogo(0.35,6,100000)
+  
+W <- jogo(0.40,10,100000)
+
+Q <- jogo(0.50,4,100000)
+
+mean(X);mean(Z);mean(W);mean(Q)
+
+
+probs <- c(0.25, 0.35, 0.40, 0.5)
+medias <- c(mean(X), mean(Z), mean(W), mean(Q))
+
+# Gráfico
+plot(medias, probs)
+
+
+
+
