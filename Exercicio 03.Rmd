@@ -1,0 +1,34 @@
+---
+title: "Atividade 03"
+output: html_notebook
+---
+
+### 1 Vetores aleatórios com sample()
+##### 1.1 Amostragem com e sem reposição
+
+Descreva como obter o listado a seguir com o uso da função sample().
+
+- A) Uma turma tem 45 alunos. Vai se escolher uma comissão de cinco representantes selecionando os indivíduos ao acaso.
+```{r}
+sample(45,5)
+```
+
+
+- B) Obter uma sequencia de resultados de 10 lançamentos de uma moeda.
+```{r}
+sample(
+```
+
+
+- C) Utilizando os algarismos 0 a 9 obter um número de 4 algarismos.
+
+- D) Em uma corrida de automóveis com 20 pilotos obter um possível pódium (três primeiros colocados), considerando chances iguais de resultados entre os pilotos.
+```{r}
+plot(cars)
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.

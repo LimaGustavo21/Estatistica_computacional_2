@@ -44,6 +44,11 @@ mean(um_dado == 5 | um_dado ==  2)
 mean(apply(dois_dados, 1 , function (x) sum(x) == 11))
 
 
+mean(dois_dados[,1] + dois_dados[,2] == 11)
+
+
+
+
 # A soma dos valores ser 7.
 
 mean(apply(dois_dados, 1,function (x) sum(x) == 7))
@@ -177,6 +182,7 @@ for (i in 1:10000) {
   
   
 }
+
 
 #1.1 ser concluído com menos de 22 minutos?
 mean(Resultado_s1 < 22) 

@@ -1,0 +1,288 @@
+---
+title: "Atividade 1"
+output: html_notebook
+---
+
+### 2.1 Fornecer comandos para criar vetores a seguir.
+
+
+    1 1 1 2 2 2 3 3 3 4 4 4 5 5 5
+    1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
+    1 2 3 4 5 6 7 8 9 10 1 2 3 4 5 6 7 8 9 10
+    0.5 1.5 2.5 3.5 4.5 5.5 6.5 7.5
+    -3 -2 -1 0 1 2 3
+    10  10  15  15  15  15  15  13  13  13
+    1  2  2  3  3  3  4  4  4  4  5  5  5  5  5
+    10  10  10  10  10  9  9  9  9  8  8  8  7  7
+
+```{r}
+
+a <- rep(c(1,2,3,4,5),each = 3)
+b <- rep(c(1,2,3),5)
+c <- rep(seq(1,10),2)
+d <- seq(0.5,7.5)
+e <- seq(-3,3)
+f <- rep(c(10,15,13),c(2,5,3))
+g <- rep(seq(1,5), seq(1,5))
+h <- rep(seq(10,7), seq(5,2))
+
+```
+
+### 2.2 Criar vetores com os seguintes elementos
+
+
+    12   14   16   11   12   18   15   12   15
+    3  7  11  15  19  23
+    1  2  4  7  11  16  22  29  37  46  56  67
+    
+    
+```{r}
+a <-  c(12,14,16,11,12,18,15,12,15)
+
+b <- seq(3,23,4)
+
+c <-  c(1,cumsum(1:12)+1)
+```
+
+### 2.3 Fornecer comandos que forneçam a partir dos vetores criados no exemplo anterior:
+
+    Quantos valores únicos há em a) ?
+    Quais os valores em a) maiores que 13 ?
+    Quantos são os valores em a) maiores que 13 ?
+    Qual a proporção de valores em a) maiores que 13 ?
+    Qual o resultado em somar o vetor em b) com em c) ?
+    Quantos valores de a) são divisíveis por 3 ? Quais são eles?
+    Quantas vezes ocorrem cada valor de a)
+    Qual o valor mais frequente em a)
+
+```{r}
+length(unique(a))
+
+a[a>13]
+
+length(a[a>13])
+
+mean(a>13)
+
+b + c
+
+sum(a%%3 == 0)
+
+
+freq <- table(a)
+
+freq[freq == max(table(a))]
+```
+
+### 2.4 Ainda com os vetores criados no exemplo anterior, fornecer comandos que:
+
+
+    calcule as médias e desvios padrão de cada vetor.
+    crie um vetor permutando de posição os elementos do primeiro vetor.
+    crie um vetor amostrando com repetição os elementos do primeiro vetor e formando u vetor de mesmo tamanho.
+    repita o item anterior 10 vezes e em cada uma obtenha a média dos vetores criados.
+    
+```{r}
+mean(a) ; mean(b); mean(c) 
+
+sd(a) ; sd(b); sd(c) 
+
+sample(a, length(a))
+
+rep <- sample(a, length(a), replace = T)
+
+for (i in 1:10){
+  print(mean(sample(a, length(a), replace = T)))
+  
+}
+
+```
+
+### 3.1 Aplicação financeira
+
+Considere uma aplicação financeira com aportes mensais de R$ 100,00, juros de 0,3% ao mês.
+
+    - Qual o valor após 1 ano?
+```{r}
+valores <-  matrix(0,12,2)
+
+valores[1,] <- c(1,100)
+
+deposito <- 100
+
+juros <- 1.003
+
+for (i in 2:12) {
+    
+    valores[i,] <- c(i,deposito + valores[i-1,2]*juros)
+  
+  
+}
+valores
+```
+    
+    - Quantos meses são necessários para atingir R$ 2.000,00 ?
+
+```{r}
+
+valores_2 <-  matrix(0,25,2)
+
+valores_2[1,] <- c(1,100)
+
+deposito <- 100
+
+juros <- 1.003
+
+i <- 2
+
+while (valores_2[i-1,2] < 2000){
+  
+
+
+  valores_2[i,] <- c(i,deposito + valores_2[i-1,2]*juros)
+  
+   i <- i+1
+  
+}
+
+valores_2
+```
+
+### 3.2 Sequência de Fibonacci
+    
+É uma sequencia de números (F0,F1,F2,…,Fn) em que F0=0,F1=1, F2=1 e Fk=Fk−2+Fk−1.
+Escreva comandos para:
+
+    - Gerar os 10 primeiros números.
+```{r}
+fib <- c(0,1)
+
+for (i in 3:10){
+  
+  fib[i] <- fib[i-2] + fib[i-1]
+  
+}
+fib
+```
+    
+    - Encontrar o primeiro valor maior que 200
+```{r}
+fib <- c(0,1)
+i <- 3 
+
+while( max(fib) <= 200 ){
+    
+    
+    
+    fib[i] <- fib[i-2] + fib[i-1]
+    
+    i <- i +1
+}
+max(fib)
+```
+    
+    - Encontrar quantos termos são necessários para superar 500.
+```{r}
+fib <- c(0,1)
+i <- 3 
+
+while( max(fib) <= 500 ){
+    
+    
+    
+    fib[i] <- fib[i-2] + fib[i-1]
+    
+    i <- i +1
+}
+length(fib)
+
+```
+```
+
+## 4 Funções:
+
+### 4.1 Crie uma função que receba um número e encontre um valor igual ou maior que seja divisível por 7.
+
+```{r}
+
+
+fun <- function(x) {
+  if (x %% 7 == 0) {  
+    return(x)
+  } else {
+    return(x + (7 - x %% 7))  
+  }
+}
+
+a <- fun(21)
+
+
+```
+
+### 4.2 Crie uma função que:
+
+
+    - Tome um número e calcule a altura de um triângulo equilátero com lado igual a este número.
+    
+```{r}
+alta <- function(lado) {
+  x <- lado * sqrt(3) / 2
+  return(x)
+}
+
+alta(3)
+```
+    
+    - Idem para calcular a área.
+```{r}
+ar <- function(lado) {
+    
+    y <- (lado*alta(lado))/2
+    
+    return(y)
+    
+   
+}
+
+ar(3)
+```
+    
+    
+    - Idem para calcular o raio da circunferência circunscrita.
+```{r}
+circ <- function(lado) {
+
+    z <- lado/sqrt(3)
+    
+    return(z)
+}
+
+circ(3)
+
+```
+    
+    
+    - Aplique a(s) funções aos números (lados) 1, 2, 4, 7, 11, 16, 22, 29, 37, 46, 56 e 67.
+
+
+### 4.3 O problema dos aniversários
+
+Um exemplo clássico para mostrar que a intuição pode ser uma “má conselheira” quando calculamos probabilidades é o problema dos aniversários.
+O problema em calcular a probabilidade de haver alguma uma coincidência de aniversário em um grupo de pessoas.
+Escreva uma função em R que permita resolver ambos: achar a probabilidade para um grupo de pessoas ou achar o número de pessoas para uma certa probabilidade. Faça também o gráfico desta função.
+
+ani <- function(x) {
+
+     if(x>0 &)
+     
+}
+
+
+
+
+
+
+
+
+
+
