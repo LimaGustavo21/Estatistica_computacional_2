@@ -16,19 +16,83 @@ sample(45,5)
 
 - B) Obter uma sequencia de resultados de 10 lançamentos de uma moeda.
 ```{r}
-sample(
+moeda <- c("k","c")
+sample(moeda,10, replace = T)
 ```
 
 
 - C) Utilizando os algarismos 0 a 9 obter um número de 4 algarismos.
 
-- D) Em uma corrida de automóveis com 20 pilotos obter um possível pódium (três primeiros colocados), considerando chances iguais de resultados entre os pilotos.
 ```{r}
-plot(cars)
+paste(sample(0:9, 4, replace = TRUE), collapse = "")
+
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+- D) Em uma corrida de automóveis com 20 pilotos obter um possível pódium (três primeiros colocados), considerando chances iguais de resultados entre os pilotos.
+```{r}
+sample(1:20, 3, replace = FALSE)
+```
+##### 1.2 Opções da função
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+- A) Acesse informações sobre função sample() (use args(sample) e help(sample)). Descreva o uso e crie exemplos do uso de cada um dos argumentos da função.
+
+```{r}
+help(sample)
+```
+
+##### 1.3 Lançamentos de um dado
+
+- A) Use a função sample() para simular o lançamento de um dado.
+
+```{r}
+dado <- 1:6
+sample(dado,1)
+```
+- B) Idem anterior porém agora 20 lançamentos.
+```{r}
+lanc_20 <- sample(dado, 20, replace = TRUE); lanc_20
+```
+- C) Verifique quantas foram as ocorrências de cada face.
+```{r}
+freq <- table(lanc_20); freq
+```
+
+- D) Faça um gráfico do número obtido e o esperado de ocorrências das faces.
+```{r}
+esperado <- rep(20/6,6)
+plot(freq, type = "h")
+plot(esperado, type = "h")
+```
+
+- E) Obtenha as frequências e proporções de cada face em 12, 60, 120, 600, 12.000 e 600.000 lançamentos. Avalie a proximidade dos resultados à frequencia esperada. Faça teste de aderência em cada caso. Voce notou algum resultado “potencialmente” contra intuitivo?
+```{r}
+lanc_dado <- function(qtd_lanc) {
+  
+  resultados <- sample(1:6,qtd_lanc,replace = T)
+  
+  freq <-  table(resultados)
+  
+  prop <-  freq/qtd_lanc
+  
+  freq_esp <- sum((freq - rep(qtd_lanc/6,6))**2)
+  
+  prop_esp <- sum((prop - rep(1/6,6))**2)
+  
+  freq;prop;freq_esp;prop_esp
+  
+  
+}
+lanc_dado(11000)
+
+```
+- F) Simule agora o lançamento de dois dados e obtenha a soma das faces.
+```{r}
+
+```
+
+- G) Obtenha a frequência dos valores da soma das faces em 1800 lançamentos de dois dados. Compare com o valor teórico e faça um gráfico adequado.
+```{r}
+
+```
+
