@@ -208,12 +208,13 @@ mean(Resultado_s3 > 60)
 
 
 
-y <- rnorm(10000, 100, 10)
+y <- rnorm(1000000, 100, 10)
 
 
 #Calcule:
 
 #P(Y<108)
+
 
 mean(y < 108)
 
@@ -236,6 +237,8 @@ quantile(y, 0.4)
 #P(Y<102|Y<112)
 
 mean(y < 102) / mean(y < 112) 
+
+mean(subset(y,y<112) < 102)
 
 #P(Y>115|Y>105)
 
@@ -261,7 +264,7 @@ mean(y>105 & y <120) / mean(y > 105)
 
 n <-  1000000
 
-X <- numeric(1000000)
+X <- numeric(n)
 
 
 for (i in 1:n) {
@@ -280,6 +283,7 @@ for (i in 1:n) {
   X[i] <- length(Y)
   
 } 
+
 
 # A) Qual a probabilidade de conseguir 2 vitórias antes do jogo encerrar?
 
@@ -349,6 +353,78 @@ medias <- c(mean(X), mean(Z), mean(W), mean(Q))
 plot(medias, probs)
 
 
+#1.6 Considere o jogo anterior mas com um diferente critério de parada. O jogo se encerra quando se perde duas rodadas consecutivas. Calcule:
+
+
+n <-  1000000
+
+X <- numeric(n)
+
+
+for (i in 1:n) {
+  
+  Y <- c()
+  fracasso <- 0
+  
+  while (fracasso < 2) {
+    
+    y1 <- rbinom(1,1,0.35) ; y1 
+    
+    Y <- c(Y,y1) ; Y
+    
+    if (y1 == 1) {
+      fracasso <- 0
+    } else{
+      fracasso <- fracasso + 1
+    }
+    fracasso
+    
+    
+  }
+  
+  
+  X[i] <- length(Y)
+  
+} 
+
+
+
+
+
+  
+#  Qual a probabilidade de conseguir 2 vitórias antes do jogo encerrar?
+mean(X == 4)
+
+#  Qual a probabilidade do jogo ter quatro rodadas?
+
+
+
+#  Qual a probabilidade do jogo ter mais de cinco rodadas?
+
+#  Qual o número esperado de vitórias?
+
+#  Qual o número esperado de rodadas?
+
+
+
+
+#  Repita os cálculos para ao menos três outros valores da probabilidade de ganhar uma rodara e número de derrotas que determina o encerramento do jogo.
+#  Faça um gráfico do número esperado de rodadas em função do valor da probabilidade.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #1.7 Um exemplo com IMC
 
 #Suponha que uma população tem distribuição normal com valor médio de IMC igual 
@@ -384,4 +460,9 @@ div_gam <- cut(imc_gam,
 table(div_gam)
 
 hist(imc) ; hist(imc_gam)
+
+
+
+
+
 
