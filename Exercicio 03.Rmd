@@ -308,6 +308,55 @@ Y <-  floor(runif(30,1,7)) ; Y
 ```{r}
 table(Y)
 ```
+### 3 Simulando com rnorm()
+
+##### 3.1 Explorando simulações
+
+- A) Acesse informações sobre função rnorm() (use args(rnorm) e help(rnorm))
+
+```{r}
+args(rnorm)
+```
+
+- B) Gere 100 valores de uma distribuição normal padrão (ou seja, com média zero e desvio padrão 1) e faça um histograma destes valores.
+
+```{r}
+x <- rnorm(100)
+
+hist(x)
+```
+- C) Simule 200 valores de uma distribuição normal de média 70 e desvio padrão 8. Compare os valores simulados com teóricos usando:
+
+```{r}
+Y <- rnorm(200,70,8)
+
+teo <- dnorm(Y, 70,8)
+
+#histograma (hist()),
+par(mfrow = c(1, 2))
+hist(Y)  
+curve(dnorm(x, mean = 70, sd = 8), from = 40, to = 100)
+
+#gráfico de densidade (density()),
+par(mfrow = c(1, 2))
+plot(density(Y))  
+curve(dnorm(x, mean = 70, sd = 8), from = 40, to = 100)
+
+#gráfico de distribuição acumulada (teórica e empírica),
+
+par(mfrow = c(1, 2))
+plot(ecdf(Y))
+curve(pnorm(x, mean = 70, sd = 8), col = "red", add = TRUE)
+
+
+#qq-plot normal (qqnorm()).
+
+
+qqnorm(Y)
+
+
+```
+
 
 
 
