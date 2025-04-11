@@ -61,8 +61,12 @@ freq <- table(lanc_20); freq
 - D) Faça um gráfico do número obtido e o esperado de ocorrências das faces.
 ```{r}
 esperado <- rep(20/6,6)
-plot(freq, type = "h")
-plot(esperado, type = "h")
+
+resultados <- rbind(as.numeric(freq),esperado)
+
+barplot(resultados, beside = TRUE)
+
+
 ```
 
 - E) Obtenha as frequências e proporções de cada face em 12, 60, 120, 600, 12.000 e 600.000 lançamentos. Avalie a proximidade dos resultados à frequencia esperada. Faça teste de aderência em cada caso. Voce notou algum resultado “potencialmente” contra intuitivo?
@@ -71,28 +75,239 @@ lanc_dado <- function(qtd_lanc) {
   
   resultados <- sample(1:6,qtd_lanc,replace = T)
   
-  freq <-  table(resultados)
+  freq <-  table(factor(resultados, levels = 1:6))
   
   prop <-  freq/qtd_lanc
   
-  freq_esp <- sum((freq - rep(qtd_lanc/6,6))**2)
-  
   prop_esp <- sum((prop - rep(1/6,6))**2)
   
-  freq;prop;freq_esp;prop_esp
+  desvio_perc <- sqrt(prop_esp) * 100
   
+   
+  cat("Quantidade de lançamentos:", qtd_lanc, "\n\n")
+  
+  cat("Frequências observadas:\n")
+  print(freq)
+  
+  cat("\nProporções observadas:\n")
+  print(round(prop, 4))
+  
+  cat("Desvio quadrático das proporções em relação ao esperado:", round(prop_esp, 6), desvio_perc, "\n")
+  
+  
+  cat("Resultado do teste qui-quadrado:\n")
+  print(chisq.test(freq, p = rep(1/6, 6)))
   
 }
-lanc_dado(11000)
+lanc_dado(12)
+lanc_dado(60)
+lanc_dado(120)
+lanc_dado(600)
+lanc_dado(12000)
+lanc_dado(600000)
 
 ```
 - F) Simule agora o lançamento de dois dados e obtenha a soma das faces.
 ```{r}
+dado_1 <- sample(1:6,1800,replace = T)
+dado_2 <- sample(1:6,1800,replace = T)
 
+sum_dado <-  dado_1 +dado_2
 ```
 
 - G) Obtenha a frequência dos valores da soma das faces em 1800 lançamentos de dois dados. Compare com o valor teórico e faça um gráfico adequado.
 ```{r}
+dado_1 <- sample(1:6,1800,replace = T)
+dado_2 <- sample(1:6,1800,replace = T)
+
+sum_dado <-  table(dado_1 +dado_2)
+
+
+
+soma_dados <- table(outer(1:6, 1:6, FUN = "+"))/36*1800
+
+# Combinar as tabelas
+tabelas <- rbind(as.numeric(sum_dado), as.numeric(soma_dados))
+
+# Desenhar o gráfico
+barplot(tabelas,
+        beside = TRUE,
+        col = c("blue", "grey"),
+        names.arg = names(sum_dado),
+        main = "Comparação de Frequências",
+        xlab = "soma",
+        ylab = "Freq")
+
+legend("topright", legend = c("Experimento", "teórico"), fill = c("blue", "grey"))
 
 ```
+##### 1.4 Amostrando conjunto de dados
+
+Considere o conjunto de dados mtcars incluído no R.
+
+```{r}
+mtcars
+```
+
+
+- A) Componha um novo objeto selecionando, ao acaso, cinco linhas deste conjunto de dados.
+
+```{r}
+linhas <- sample(1:nrow(mtcars),5)
+
+amostra <- mtcars[linhas,]
+```
+- B) Compare o consumo (mpg) médio calculado com os dados originais e no subconjunto obtido.
+```{r}
+mean(amostra$mpg)
+
+mean(mtcars$mpg)
+```
+- C) Repita a criação do novo conjunto e cálculo da média de mpg 1000 vezes. Compare agora os 1000 valores de médias obtidas com a média original calculada com todos os dados. Discuta os resultados.
+
+```{r}
+ams <- function(n){
+  
+  med_ams <- numeric(n)
+  
+  
+  for (i in 1:n){
+    linhas <- sample(1:nrow(mtcars),5)
+  
+    amostra <- mtcars[linhas,]
+  
+    med_ams[i] <- mean(amostra$mpg)
+    
+  }
+  
+  return(med_ams)
+}
+
+y <- ams(10000)
+
+hist(y, xlim=c(10,30))
+abline(v =mean(mtcars$mpg) , col = "red", lwd = 2, lty = 2) 
+
+```
+##### 1.5 (Re)Amostrando com repetição
+
+Repita o exercício anterior porém no passo (a.) retire amostras com reposição com tamanho igual ao tamanho dos dados. Discuta resultados e ainda semelhanças e diferenças com o problema anterior.
+
+```{r}
+
+ams <- function(n){
+  
+  med_ams <- numeric(n)
+  
+  
+  for (i in 1:n){
+    linhas <- sample(1:nrow(mtcars),nrow(mtcars), replace = T)
+  
+    amostra <- mtcars[linhas,]
+  
+    med_ams[i] <- mean(amostra$mpg)
+    
+  }
+  
+  return(med_ams)
+}
+
+
+y <- ams(10000)
+
+hist(y, xlim=c(10,30))
+abline(v =mean(mtcars$mpg) , col = "red", lwd = 2, lty = 2) 
+
+
+
+```
+### 2 Vetores aleatórios com runif()
+
+##### 2.1 Simulando e visualizando simulações
+
+- A) Acesse informações sobre função runif() (use args(runif) e help(runif)).
+```{r}
+args(runif)
+
+```
+- B) Use a função para gerar 10 valores. Armazene os valores em um objeto chamado y1.
+
+```{r}
+y1 <- runif(10)
+y1
+```
+ - C) Rode a função novamente gerando 10 valores. Armazene os valores em um objeto chamado y2. Os valores de y1 e y2 são iguais? Explique.
+ 
+```{r}
+y2 <- runif(10)
+
+y1;y2
+```
+- D) Gere agora um vetor com 10000 valores gerados por runif() e imagine fazer um histograma com estes valores. Qual o padrão que voce espera encontrar neste histograma? Use hist() para fazer o histograma e verifique se o padrão é o que voce imaginou. Use também density() para visualizar a distribuição empírica do dado. 
+
+```{r}
+x <- runif(10000)
+par(mfrow = c(1, 2))
+
+hist(x)
+plot(density(x))
+
+```
+- E) Coloque em mesmo um gráfico as distribuições acumuladas teórica e empírica (voce pode usar punif() e ecdf()).
+```{r}
+ecdf_valores <- ecdf(x)
+
+plot(ecdf_valores, col = 'red')
+curve(punif(x), add = T)
+```
+#####  2.2 Simulando em outros intervalos
+
+Utilizando runif():
+
+- A) Gere agora 8 valores aleatórios entre 4 e 10 de duas formas:
+usando argumentos de runif(),
+fazendo uma operação com valores gerados por runif(8).
+
+```{r}
+x <- runif(8,4,10)
+
+y <- runif(8)*6 + 4
+
+y
+
+```
+- B) Simular o lançamento de 10 moedas.
+```{r}
+ifelse(runif(10)<0.5,"k","c")
+
+
+```
+- C) Simular 10 lançamento de um dado.
+
+```{r}
+
+floor(runif(10,1,7))
+
+```
+- D) Gere uma sequência (aleatória) de 20 resultados do lançamento de uma moeda.
+```{r}
+X <- ifelse(runif(20)<0.5,"k","c"); X
+```
+- E) Quantas caras e coroas voce espera? Quantas foram geradas?
+```{r}
+mean(X == "k")
+```
+
+- F) Uma sequência (aleatória) de 30 resultados do lançamento de um dado.
+
+```{r}
+Y <-  floor(runif(30,1,7)) ; Y
+```
+
+- G) Quantas de cada face do dado voce espera observar? Quantas foram geradas?
+```{r}
+table(Y)
+```
+
+
 
