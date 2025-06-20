@@ -1,0 +1,240 @@
+---
+title: "Filas"
+output: html_notebook
+---
+
+Considere um problema básico de filas em que as chegadas ocorrem segundo uma distribuição exponencial de parâmetro λ1 e os atendimentos segundo segundo uma distribuição exponencial de parâmetro λ2. Supõe-se independência entre as chegadas e atendimentos.
+
+Diferentes cenários podem ser definidos com escolhas de tempo/tamanho da fila, λ1 e λ2.
+
+- 1.Forneça um código para geração das filas e ilustre o uso em diferentes cenários.
+- 2.Estude a distribuição amostral do tamanho mediano da fila.
+- 3.Estude a distribuição amostral do tamanho máximo da fila.
+
+
+...............................................................................................................................................................................
+
+### Resolução 
+
+
+  -   Chegadas:
+  
+O tempo entre as chegadas de clientes em um sistema de filas é modelado por uma distribuição exponencial, cuja função densidade de probabilidade (PDF) é dada por:
+
+$$
+f(t_c) = \lambda e^{-\lambda t_c}, \quad t_c \geq 0
+$$
+
+
+- \( \lambda \) → taxa média de chegadas por **minuto**  
+- \( t_c \) → tempo (em minutos) até a próxima chegada
+
+
+
+
+
+```{r}
+lambda <- 5/60 # taxa média de chegada convertida em minutos (5/hora)
+
+rexp(1, rate = lambda)
+```
+
+
+
+O tempo de atendimento de cada cliente em um sistema de filas é modelado por uma distribuição exponencial, cuja função densidade de probabilidade (PDF) é:
+
+$$
+f(t_a) = \lambda_2 e^{-\lambda_2 t_a}, \quad t_a \geq 0
+$$
+
+
+- \( \lambda_2 \) → taxa média de atendimentos por unidade de tempo (por exemplo, por minuto ou por hora)  
+- \( t_a \) → tempo de atendimento de um cliente  
+
+```{r}
+lambda2 <- 5/60 # taxa média de atendimento convertida em minutos (5/hora)
+
+rexp(1, rate = lambda2)
+```
+
+
+Dado que as chegadas independem do tempo de atendimento, podemos gerar a simulação de um dia de expediente com os períodos de chegada 
+
+```{r}
+tempo_total <- 0
+chegadas <- c()
+
+tempo_limite <- 600 # 10horas de expediente
+
+
+
+while (tempo_total < tempo_limite) {
+  tempo_proxima_chegada <- rexp(1, rate = lambda)
+  tempo_total <- tempo_total + tempo_proxima_chegada
+  if (tempo_total <= tempo_limite) {
+    chegadas <- c(chegadas, tempo_total)
+  }
+}
+chegadas
+(Total_chegadas <- length(chegadas)) 
+```
+Definido a quantidade de pessoas que chegaram, podemos gerar agora o tempo de cada atendimento
+
+
+```{r}
+(tempo_atendimento <- rexp(Total_chegadas, rate = lambda2))
+```
+como definir a fila ? 
+
+```{r}
+#Início - atendimento 1 
+atendimentos_feitos <- 0
+fila_atual <- 0 
+
+fim_atendimento <-  numeric(Total_chegadas)
+
+
+(inicio_atendimento <- chegadas[1])
+
+(tempo_atendimento[1])
+
+(fim_atendimento[1] <- inicio_atendimento + tempo_atendimento[1])
+
+
+
+
+
+
+#Atendimento 2
+
+chegadas[2]
+
+(atendimentos_feitos <- sum(fim_atendimento <= chegadas[2] & fim_atendimento > 0))
+
+(fila_atual <- 1 - atendimentos_feitos)
+
+
+(inicio_atendimento <- max(max(fim_atendimento) ,chegadas[2]))
+
+(tempo_atendimento[2])
+
+(fim_atendimento[2] <- inicio_atendimento + tempo_atendimento[2])
+
+
+#Atendimento 3
+
+chegadas[3]
+
+(atendimentos_feitos <- sum(fim_atendimento <= chegadas[3] & fim_atendimento > 0))
+
+(fila_atual <- 2 - atendimentos_feitos)
+
+
+(inicio_atendimento <- max(max(fim_atendimento) ,chegadas[3]))
+
+(tempo_atendimento[3])
+
+(fim_atendimento[3] <- inicio_atendimento + tempo_atendimento[3])
+
+fim_atendimento
+
+```
+
+
+
+
+
+
+
+```{r}
+set.seed(123)
+
+# Parâmetros
+lambda_chegada <- 5 / 60    # chegadas por minuto
+lambda_atendimento <- 7 / 60  # atendimentos por minuto
+tempo_limite <- 10 * 60     # 10 horas em minutos
+
+# Inicializar variáveis
+tempo_total <- 0
+tempo_chegada <- c()
+
+# Simular tempos de chegada até completar 10 horas
+while (tempo_total < tempo_limite) {
+  tempo_proxima_chegada <- rexp(1, rate = lambda_chegada)
+  tempo_total <- tempo_total + tempo_proxima_chegada
+  if (tempo_total <= tempo_limite) {
+    tempo_chegada <- c(tempo_chegada, tempo_total)
+  }
+}
+
+# Número de clientes
+n_clientes <- length(tempo_chegada)
+
+# Gerar tempos de atendimento
+tempos_atendimento <- rexp(n_clientes, rate = lambda_atendimento)
+
+# Inicializar vetores
+inicio_atendimento <- numeric(n_clientes)
+fim_atendimento <- numeric(n_clientes)
+tempo_espera <- numeric(n_clientes)
+tamanho_fila <- numeric(n_clientes)
+
+# Variável para controlar o fim do atendimento anterior
+fim_atendimento_anterior <- 0
+
+# Variável para controlar o tamanho atual da fila
+fila_atual <- 0
+
+# Loop para processar cada cliente
+for (i in 1:n_clientes) {
+  
+  # Chegada do cliente
+  chegada <- tempo_chegada[i]
+  
+  # Quantos atendimentos foram concluídos antes dessa chegada?
+  if (i == 1) {
+    atendimentos_concluidos <- 0
+  } else {
+    atendimentos_concluidos <- sum(fim_atendimento[1:(i-1)] <= chegada)
+  }
+  
+  # Fila atual = número de chegadas até agora - número de atendimentos concluídos
+  fila_atual <- i - atendimentos_concluidos - 1  # -1 pois o cliente i acabou de chegar
+  
+  # Armazena tamanho da fila no momento da chegada do cliente i
+  tamanho_fila[i] <- fila_atual
+  
+  # Define início e fim do atendimento
+  inicio_atendimento[i] <- max(chegada, fim_atendimento_anterior)
+  fim_atendimento[i] <- inicio_atendimento[i] + tempos_atendimento[i]
+  
+  # Tempo de espera
+  tempo_espera[i] <- inicio_atendimento[i] - chegada
+  
+  # Atualiza fim do atendimento anterior
+  fim_atendimento_anterior <- fim_atendimento[i]
+}
+
+# 📊 Resultados
+cat("Número de clientes atendidos em 10 horas:", n_clientes, "\n")
+cat("Tempo médio de espera (minutos):", round(mean(tempo_espera), 2), "\n")
+cat("Tempo máximo de espera (minutos):", round(max(tempo_espera), 2), "\n")
+cat("Tamanho máximo da fila formada:", max(tamanho_fila), "clientes\n")
+
+# 📈 Gráfico do tamanho da fila ao longo dos atendimentos
+plot(tempo_chegada, tamanho_fila, type = "s", col = "purple",
+     xlab = "Tempo (minutos)", ylab = "Tamanho da fila",
+     main = "Evolução do tamanho da fila durante o expediente")
+```
+
+
+
+
+
+
+
+
+
+
+
+

@@ -424,7 +424,6 @@ mean(X == 4)
 
 
 
-
 #1.7 Um exemplo com IMC
 
 #Suponha que uma população tem distribuição normal com valor médio de IMC igual 
