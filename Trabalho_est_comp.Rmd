@@ -358,25 +358,36 @@ par(mfrow = c(1, 1))
 
 
 ```{r}
-med_tend_maior <- replicate(10000, median(sim_fila(lambda_chegada = 10/60,
-                                                lambda_atendimento = 5/60,
+med_tend_maior <- replicate(10000, median(sim_fila(lambda_chegada = 60/60,
+                                                lambda_atendimento = 30/60,
                                                 tempo_expediente = 600)))
 
 
+mean(med_tend_maior)
 hist(med_tend_maior)
 ```
 
 ```{r}
-max_tend_maior <- replicate(10000, max(sim_fila(lambda_chegada = 10/60,
-                                                lambda_atendimento = 5/60,
+max_tend_maior <- replicate(50000, max(sim_fila(lambda_chegada = 60/60,
+                                                lambda_atendimento = 45/60,
                                                 tempo_expediente = 600)))
 
 
+mean(max_tend_maior)
 hist(max_tend_maior)
 ```
 
 
 
+```{r}
+max_tend_maior <- replicate(10000, max(sim_fila(lambda_chegada = 60/60,
+                                                lambda_atendimento = 20/60,
+                                                tempo_expediente = 600)))
+
+
+mean(max_tend_maior)
+hist(max_tend_maior)
+```
 
 
 
