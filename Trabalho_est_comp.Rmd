@@ -1,37 +1,32 @@
 ---
 title: "Filas"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 
-Considere um problema básico de filas em que as chegadas ocorrem segundo uma distribuição exponencial de parâmetro λ1 e os atendimentos segundo segundo uma distribuição exponencial de parâmetro λ2. Supõe-se independência entre as chegadas e atendimentos.
+Considere um problema básico de filas em que as chegadas ocorrem segundo uma distribuição exponencial de parâmetro λ1 e os atendimentos segundo uma distribuição exponencial de parâmetro λ2. Supõe-se independência entre as chegadas e atendimentos.
 
 Diferentes cenários podem ser definidos com escolhas de tempo/tamanho da fila, λ1 e λ2.
 
-- 1.Forneça um código para geração das filas e ilustre o uso em diferentes cenários.
-- 2.Estude a distribuição amostral do tamanho mediano da fila.
-- 3.Estude a distribuição amostral do tamanho máximo da fila.
-
+-   1.Forneça um código para geração das filas e ilustre o uso em diferentes cenários.
+-   2.Estude a distribuição amostral do tamanho mediano da fila.
+-   3.Estude a distribuição amostral do tamanho máximo da fila.
 
 ...............................................................................................................................................................................
 
-### Resolução 
+### Resolução
 
+-   Chegadas:
 
-  -   Chegadas:
-  
-O tempo entre as chegadas de clientes em um sistema de filas é modelado por uma distribuição exponencial, cuja função densidade de probabilidade (PDF) é dada por:
+O tempo entre as chegadas de clientes em um sistema de filas é modelado por uma distribuição exponencial:
 
 $$
 f(t_c) = \lambda e^{-\lambda t_c}, \quad t_c \geq 0
 $$
 
-
-- \( \lambda \) → taxa média de chegadas por **minuto**  
-- \( t_c \) → tempo (em minutos) até a próxima chegada
-
-
-
-
+-   $\lambda$ → taxa média de chegadas por **minuto**\
+-   $t_c$ → tempo (em minutos) até a próxima chegada
 
 ```{r}
 lambda <- 5/60 # taxa média de chegada convertida em minutos (5/hora)
@@ -39,26 +34,28 @@ lambda <- 5/60 # taxa média de chegada convertida em minutos (5/hora)
 rexp(1, rate = lambda)
 ```
 
-
-
-O tempo de atendimento de cada cliente em um sistema de filas é modelado por uma distribuição exponencial, cuja função densidade de probabilidade (PDF) é:
+O tempo de atendimento de cada cliente em um sistema de filas é modelado por uma distribuição exponencial:
 
 $$
 f(t_a) = \lambda_2 e^{-\lambda_2 t_a}, \quad t_a \geq 0
 $$
 
-
-- \( \lambda_2 \) → taxa média de atendimentos por unidade de tempo (por exemplo, por minuto ou por hora)  
-- \( t_a \) → tempo de atendimento de um cliente  
+-   $\lambda_2$ → taxa média de atendimentos por unidade de tempo (por exemplo, por minuto ou por hora)\
+-   $t_a$ → tempo de atendimento de um cliente
 
 ```{r}
-lambda2 <- 5/60 # taxa média de atendimento convertida em minutos (5/hora)
+lambda2 <- 4/60 # taxa média de atendimento convertida em minutos (5/hora)
 
 rexp(1, rate = lambda2)
 ```
 
+Exemplo de uma simulação:
 
-Dado que as chegadas independem do tempo de atendimento, podemos gerar a simulação de um dia de expediente com os períodos de chegada 
+```{r}
+rexp(5,lambda)
+```
+
+Dado que as chegadas independem do tempo de atendimento, podemos gerar a simulação de um dia de expediente com os períodos de chegada:
 
 ```{r}
 tempo_total <- 0
@@ -78,27 +75,30 @@ while (tempo_total < tempo_limite) {
 chegadas
 (Total_chegadas <- length(chegadas)) 
 ```
-Definido a quantidade de pessoas que chegaram, podemos gerar agora o tempo de cada atendimento
 
+Definido a quantidade de pessoas que chegaram, podemos gerar agora o tempo de cada atendimento
 
 ```{r}
 (tempo_atendimento <- rexp(Total_chegadas, rate = lambda2))
 ```
-como definir a fila ? 
+
+como definir a fila ?
 
 ```{r}
 #Início - atendimento 1 
 atendimentos_feitos <- 0
-fila_atual <- 0 
+fila_atual <- numeric(Total_chegadas)
 
+inicio_atendimento <-   numeric(Total_chegadas)
 fim_atendimento <-  numeric(Total_chegadas)
 
 
-(inicio_atendimento <- chegadas[1])
+(fila_atual[1] <- 0)
+(inicio_atendimento[1] <- chegadas[1])
 
 (tempo_atendimento[1])
 
-(fim_atendimento[1] <- inicio_atendimento + tempo_atendimento[1])
+(fim_atendimento[1] <- inicio_atendimento[1] + tempo_atendimento[1])
 
 
 
@@ -111,14 +111,14 @@ chegadas[2]
 
 (atendimentos_feitos <- sum(fim_atendimento <= chegadas[2] & fim_atendimento > 0))
 
-(fila_atual <- 1 - atendimentos_feitos)
+(fila_atual[2] <- 1 - atendimentos_feitos)
 
 
-(inicio_atendimento <- max(max(fim_atendimento) ,chegadas[2]))
+(inicio_atendimento[2] <- max(max(fim_atendimento) ,chegadas[2]))
 
 (tempo_atendimento[2])
 
-(fim_atendimento[2] <- inicio_atendimento + tempo_atendimento[2])
+(fim_atendimento[2] <- inicio_atendimento[2] + tempo_atendimento[2])
 
 
 #Atendimento 3
@@ -127,23 +127,18 @@ chegadas[3]
 
 (atendimentos_feitos <- sum(fim_atendimento <= chegadas[3] & fim_atendimento > 0))
 
-(fila_atual <- 2 - atendimentos_feitos)
+(fila_atual[3] <- 2 - atendimentos_feitos)
 
 
-(inicio_atendimento <- max(max(fim_atendimento) ,chegadas[3]))
+(inicio_atendimento[3] <- max(max(fim_atendimento) ,chegadas[3]))
 
 (tempo_atendimento[3])
 
-(fim_atendimento[3] <- inicio_atendimento + tempo_atendimento[3])
+(fim_atendimento[3] <- inicio_atendimento[3] + tempo_atendimento[3])
 
 fim_atendimento
 
 ```
-
-
-
-
-
 
 ```{r}
 sim_fila <- function(lambda_chegada, lambda_atendimento, tempo_expediente){
@@ -209,15 +204,15 @@ sim_fila <- function(lambda_chegada, lambda_atendimento, tempo_expediente){
 ```
 
 ```{r}
-fila <- sim_fila(5/60,4/60,600)
-
-
+fila <- sim_fila(lambda_chegada = 5/60,
+                 lambda_atendimento= 5/60,
+                 tempo_expediente = 600)
+fila
 plot(fila)
 ```
 
- #### 1.Forneça um código para geração das filas e ilustre o uso em diferentes cenários.
- 
- 
+#### A)Forneça um código para geração das filas e ilustre o uso em diferentes cenários.
+
 ```{r}
 atend_menor <-  sim_fila(lambda_chegada = 5/60,
                          lambda_atendimento = 3/60,
@@ -234,6 +229,10 @@ atend_maior <-  sim_fila(lambda_chegada = 5/60,
                           tempo_expediente = 600)
 
 
+
+```
+
+```{r, echo=FALSE}
 plot(atend_menor, type = "l", col = "red", lwd = 2,
      xlab = "Ordem de chegada", ylab = "Tamanho da fila",
      main = "Comparativo de Tamanho da Fila em Diferentes Cenários",
@@ -244,11 +243,14 @@ lines(atend_igual, col = "blue", lwd = 2)
 lines(atend_maior, col = "green", lwd = 2)
 
 
+legend("topleft",
+       legend = c("Atendimento  < chegada", 
+                  "Atendimento = chegada", 
+                  "Atendimento > chegada"),
+       col = c("red", "blue", "green"),
+       lwd = 2)
 
 ```
- 
-
-
 
 ```{r}
 # Simulações — 3 de cada cenário
@@ -271,6 +273,11 @@ atend_maior_4 <- sim_fila(lambda_chegada = 10/60, lambda_atendimento = 15/60, te
 atend_maior_5 <- sim_fila(lambda_chegada = 10/60, lambda_atendimento = 15/60, tempo_expediente = 600)
 
 
+
+
+```
+
+```{r, echo=FALSE}
 ylim_total <- range(c(atend_menor_1, atend_menor_2, atend_menor_3, atend_menor_4, atend_menor_5,
                       atend_igual_1, atend_igual_2, atend_igual_3, atend_igual_4, atend_igual_5,
                       atend_maior_1, atend_maior_2, atend_maior_3, atend_maior_4, atend_maior_5))
@@ -298,11 +305,18 @@ lines(atend_maior_3, col = "green", lwd = 2)
 lines(atend_maior_4, col = "green", lwd = 2)
 lines(atend_maior_5, col = "green", lwd = 2)
 
-# Adicionar legenda
+legend("topleft",
+       legend = c("Atendimento  < chegada", 
+                  "Atendimento = chegada", 
+                  "Atendimento > chegada"),
+       col = c("red", "blue", "green"),
+       lwd = 2)
 
-```
 
-```{r}
+
+
+
+
 # Definir layout de 2x2 plots
 par(mfrow = c(2, 2))
 
@@ -354,43 +368,273 @@ lines(atend_maior_5, col = "green", lwd = 2)
 par(mfrow = c(1, 1))
 ```
 
-#### Estude a distribuição amostral do tamanho mediano da fila.
+#### B) Estude a distribuição amostral do tamanho mediano da fila
 
+##### Fixando casos de lambda
+
+-   Atendimento maior que chegadas 15 Atendimentos/h
+
+-   Atendimento igual à chegadas 10 Atendimentos/h
+
+-   Atendmento menor que chegadas 5 Atendimentos/h
 
 ```{r}
-med_tend_maior <- replicate(10000, median(sim_fila(lambda_chegada = 60/60,
-                                                lambda_atendimento = 30/60,
+med_fila_igual <- replicate(10000, median(sim_fila(lambda_chegada = 10/60,
+                                                lambda_atendimento = 10/60,
                                                 tempo_expediente = 600)))
 
+med_fila_maior <- replicate(10000, median(sim_fila(lambda_chegada = 10/60,
+                                                lambda_atendimento = 15/60,
+                                                tempo_expediente = 600)))
 
-mean(med_tend_maior)
-hist(med_tend_maior)
+med_fila_menor <- replicate(10000, median(sim_fila(lambda_chegada = 10/60,
+                                                lambda_atendimento = 5/60,
+                                                tempo_expediente = 600)))
+
+```
+
+```{r, echo=FALSE}
+
+# Configurar o layout: 1 linha, 3 colunas
+par(mfrow = c(1, 3))
+
+# Histograma 1 - Atendimento menor
+hist(med_fila_menor, col = "grey", main = "Atendimento < Chegada",
+     xlab = "Mediana da Fila", ylab = "Frequência")
+abline(v = mean(med_fila_menor), col = "red", lwd = 2)
+text(x = mean(med_fila_menor), y = max(hist(med_fila_menor, plot=FALSE)$counts)*0.9, 
+     labels = paste0("Média = ", round(mean(med_fila_menor),2)), col = "red", pos = 4)
+
+# Histograma 2 - Atendimento igual
+hist(med_fila_igual, col = "grey", main = "Atendimento = Chegada",
+     xlab = "Mediana da Fila", ylab = "Frequência")
+abline(v = mean(med_fila_igual), col = "red", lwd = 2)
+text(x = mean(med_fila_igual), y = max(hist(med_fila_igual, plot=FALSE)$counts)*0.9, 
+     labels = paste0("Média = ", round(mean(med_fila_igual),2)), col = "red", pos = 4)
+
+# Histograma 3 - Atendimento maior
+hist(med_fila_maior, col = "grey", main = "Atendimento > Chegada",
+     xlab = "Mediana da Fila", ylab = "Frequência")
+abline(v = mean(med_fila_maior), col = "red", lwd = 2)
+text(x = mean(med_fila_maior), y = max(hist(med_fila_maior, plot=FALSE)$counts)*0.9, 
+     labels = paste0("Média = ", round(mean(med_fila_maior),2)), col = "red", pos = 4)
+
+# Voltar layout padrão
+par(mfrow = c(1, 1))
+```
+
+#### c) Estude a distribuição amostral do tamanho máximo da fila.
+
+```{r}
+max_fila_igual <- replicate(10000, max(sim_fila(lambda_chegada = 10/60,
+                                                lambda_atendimento = 10/60,
+                                                tempo_expediente = 600)))
+
+max_fila_maior <- replicate(10000, max(sim_fila(lambda_chegada = 10/60,
+                                                lambda_atendimento = 15/60,
+                                                tempo_expediente = 600)))
+
+max_fila_menor <- replicate(10000, max(sim_fila(lambda_chegada = 10/60,
+                                                lambda_atendimento = 5/60,
+                                                tempo_expediente = 600)))
+
+```
+
+```{r, echo=FALSE}
+
+# Configurar o layout: 1 linha, 3 colunas
+par(mfrow = c(1, 3))
+
+# Histograma 1 - Atendimento menor
+hist(max_fila_menor, col = "grey", main = "Atendimento < Chegada",
+     xlab = "Máximo da Fila", ylab = "Frequência")
+abline(v = mean(max_fila_menor), col = "red", lwd = 2)
+text(x = mean(max_fila_menor), 
+     y = max(hist(max_fila_menor, plot=FALSE)$counts)*0.9, 
+     labels = paste0("Média = ", round(mean(max_fila_menor),2)), 
+     col = "red", pos = 4)
+
+# Histograma 2 - Atendimento igual
+hist(max_fila_igual, col = "grey", main = "Atendimento = Chegada",
+     xlab = "Máximo da Fila", ylab = "Frequência")
+abline(v = mean(max_fila_igual), col = "red", lwd = 2)
+text(x = mean(max_fila_igual), 
+     y = max(hist(max_fila_igual, plot=FALSE)$counts)*0.9, 
+     labels = paste0("Média = ", round(mean(max_fila_igual),2)), 
+     col = "red", pos = 4)
+
+# Histograma 3 - Atendimento maior
+hist(max_fila_maior, col = "grey", main = "Atendimento > Chegada",
+     xlab = "Máximo da Fila", ylab = "Frequência")
+abline(v = mean(max_fila_maior), col = "red", lwd = 2)
+text(x = mean(max_fila_maior), 
+     y = max(hist(max_fila_maior, plot=FALSE)$counts)*0.9, 
+     labels = paste0("Média = ", round(mean(max_fila_maior),2)), 
+     col = "red", pos = 4)
+
+# Voltar layout padrão
+par(mfrow = c(1, 1))
+```
+
+```{r, echo=FALSE}
+# Histograma Atendimento < Chegada
+hist(max_fila_menor, col = "grey", main = "Atendimento < Chegada",
+     xlab = "Máximo da Fila", ylab = "Frequência")
+
+# Média
+media_menor <- mean(max_fila_menor)
+abline(v = media_menor, col = "red", lwd = 2)
+
+# Intervalo de Confiança 95% (percentis)
+ic_menor <- quantile(max_fila_menor, probs = c(0.025, 0.975))
+
+# Traçar linhas do IC
+abline(v = ic_menor[1], col = "blue", lwd = 2, lty = 2)  # 2,5%
+abline(v = ic_menor[2], col = "blue", lwd = 2, lty = 2)  # 97,5%
+
+# Adicionar texto da média
+text(x = media_menor, 
+     y = max(hist(max_fila_menor, plot=FALSE)$counts)*0.9, 
+     labels = paste0("Média = ", round(media_menor, 2)), 
+     col = "red", pos = 4)
+
+# Adicionar texto do IC
+text(x = ic_menor[1],
+     y = max(hist(max_fila_menor, plot=FALSE)$counts)*0.8, 
+     labels = paste0("2,5% = ", round(ic_menor[1], 2)), 
+     col = "blue", pos = 4)
+
+text(x = ic_menor[2],
+     y = max(hist(max_fila_menor, plot=FALSE)$counts)*0.8, 
+     labels = paste0("97,5% = ", round(ic_menor[2], 2)), 
+     col = "blue", pos = 4)
+```
+
+###### Supomos que se a fila chegar a 60 pessoas,o estabelecimento é interditado imediatamente, qual a chance disso acontecer sob essa parametrização ?
+
+```{r}
+(mean(max_fila_menor>60))
+```
+
+###### Qual deveria ser a taxa de atendimento para garantir que essa probabilidade seja abaixo dos 5% ??
+
+```{r}
+
+#6 Atendimentos/h
+atend_6  <-replicate(10000, max(sim_fila(lambda_chegada = 10/60,
+                                                lambda_atendimento = 6/60,
+                                                tempo_expediente = 600)))
+
+mean(atend_6>60)
+    
+
+#7 Atendimentos/h
+
+
+atend_7 <- replicate(10000, max(sim_fila(lambda_chegada = 10/60,
+                                                lambda_atendimento = 7/60,
+                                                tempo_expediente = 600)))
+
+mean(atend_7>60)
+
+```
+
+```{r, echo=FALSE}
+# Histograma para o vetor atend_7
+hist(atend_7, col = "grey", main = "Atendimento = 7/h",
+     xlab = "Máximo da Fila", ylab = "Frequência")
+
+# Média
+media_7 <- mean(atend_7)
+abline(v = media_7, col = "red", lwd = 2)
+
+# Intervalo de Confiança 95% (percentis)
+ic_7 <- quantile(atend_7, probs = c(0.025, 0.975))
+
+# Traçar linhas do IC
+abline(v = ic_7[1], col = "blue", lwd = 2, lty = 2)  # 2,5%
+abline(v = ic_7[2], col = "blue", lwd = 2, lty = 2)  # 97,5%
+
+# Adicionar texto da média
+text(x = media_7, 
+     y = max(hist(atend_7, plot=FALSE)$counts)*0.9, 
+     labels = paste0("Média = ", round(media_7, 2)), 
+     col = "red", pos = 4)
+
+# Adicionar texto do IC
+text(x = ic_7[1],
+     y = max(hist(atend_7, plot=FALSE)$counts)*0.8, 
+     labels = paste0("2,5% = ", round(ic_7[1], 2)), 
+     col = "blue", pos = 4)
+
+text(x = ic_7[2],
+     y = max(hist(atend_7, plot=FALSE)$counts)*0.8, 
+     labels = paste0("97,5% = ", round(ic_7[2], 2)), 
+     col = "blue", pos = 4)
+```
+
+### Bônus
+
+###### E se estivessimos lidando com um caso onde a taxa de chegada ou atendimento não é constante durante o expediente?
+
+```{r}
+sim_fila_2 <- function(lambda_chegada_1, lambda_atendimento_1, tempo_quebra,
+                     lambda_chegada_2, lambda_atendimento_2, tempo_expediente) {
+  
+  tempo_total <- 0
+  chegadas <- c()
+  
+  while (tempo_total < tempo_expediente) {
+    if (tempo_total <= tempo_quebra) {
+      tempo_proxima_chegada <- rexp(1, rate = lambda_chegada_1)
+    } else {
+      tempo_proxima_chegada <- rexp(1, rate = lambda_chegada_2)
+    }
+    tempo_total <- tempo_total + tempo_proxima_chegada
+    if (tempo_total <= tempo_expediente) {
+      chegadas <- c(chegadas, tempo_total)
+    }
+  }
+  
+  Total_chegadas <- length(chegadas)
+  tempo_atendimento <- numeric(Total_chegadas)
+  
+  for (i in 1:Total_chegadas) {
+    if (chegadas[i] <= tempo_quebra) {
+      tempo_atendimento[i] <- rexp(1, rate = lambda_atendimento_1)
+    } else {
+      tempo_atendimento[i] <- rexp(1, rate = lambda_atendimento_2)
+    }
+  }
+  
+  inicio_atendimento <- numeric(Total_chegadas)
+  fim_atendimento <- numeric(Total_chegadas)
+  fila_atual <- numeric(Total_chegadas)
+  
+  inicio_atendimento[1] <- chegadas[1]
+  fim_atendimento[1] <- inicio_atendimento[1] + tempo_atendimento[1]
+  fila_atual[1] <- 0
+  
+  for (i in 2:Total_chegadas) {
+    atendimentos_feitos <- sum(fim_atendimento <= chegadas[i] & fim_atendimento > 0)
+    fila_atual[i] <- (i - 1) - atendimentos_feitos
+    inicio_atendimento[i] <- max(max(fim_atendimento), chegadas[i])
+    fim_atendimento[i] <- inicio_atendimento[i] + tempo_atendimento[i]
+  }
+  
+  return(fila_atual)
+}
 ```
 
 ```{r}
-max_tend_maior <- replicate(50000, max(sim_fila(lambda_chegada = 60/60,
-                                                lambda_atendimento = 45/60,
-                                                tempo_expediente = 600)))
+exemplo <- sim_fila_2(lambda_chegada_1 = 10/60,
+           lambda_atendimento_1 = 8/60,
+           tempo_quebra = 300,
+           lambda_chegada_2 = 5/60,
+           lambda_atendimento_2 = 7/60,
+           tempo_expediente = 600)
 
-
-mean(max_tend_maior)
-hist(max_tend_maior)
+plot(exemplo)
 ```
 
-
-
-```{r}
-max_tend_maior <- replicate(10000, max(sim_fila(lambda_chegada = 60/60,
-                                                lambda_atendimento = 20/60,
-                                                tempo_expediente = 600)))
-
-
-mean(max_tend_maior)
-hist(max_tend_maior)
-```
-
-
-
-
-
-
+### Obrigado :) 
